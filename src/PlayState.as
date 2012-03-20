@@ -53,16 +53,7 @@ package
 		}
 		
 		override public function update():void 
-		{
-			player.acceleration.x = 0;
-			
-			if (FlxG.keys.LEFT)
-				player.acceleration.x = -player.maxVelocity.x * 4;
-			if (FlxG.keys.RIGHT)
-				player.acceleration.x = player.maxVelocity.x * 4;
-			if (FlxG.keys.justPressed("SPACE") && player.isTouching(FlxObject.FLOOR))
-				player.velocity.y = -player.maxVelocity.y / 2;
-				
+		{		
 			super.update();
 			
 			FlxG.collide(level, player);

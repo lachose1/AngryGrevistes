@@ -12,11 +12,11 @@ package
 		{
 			gnd = false;
 			
-			super(FlxG.width / 2 - 5);
+			super(32, FlxG.height - 64);
 			loadGraphic(ninjaImage, true, false, 16, 16);
 			maxVelocity.x = 80;
-			maxVelocity.y = 200;
-			acceleration.y = 200;
+			maxVelocity.y = 400;
+			acceleration.y = 300;
 			drag.x = maxVelocity.x * 4;
 			
 			addAnimation("normal", [0, 1, 2, 3], 10);
@@ -32,6 +32,21 @@ package
 		public function isGND():Boolean
 		{
 			return gnd;
+		}
+		
+		override public function update():void 
+		{
+			acceleration.x = 0;
+			
+			if (velocity.y != 0)
+				play("jump");
+			else
+				play("normal");
+			
+			if (FlxG.keys.justPressed("SPACE") && isTouching(FlxObject.FLOOR))
+				velocity.y = -maxVelocity.y / 2;
+			
+			super.update();
 		}
 	}
 
