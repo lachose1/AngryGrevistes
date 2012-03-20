@@ -19,6 +19,8 @@ package
 			acceleration.y = 300;
 			drag.x = maxVelocity.x * 4;
 			
+			acceleration.x = maxVelocity.x * 4;
+			
 			addAnimation("normal", [0, 1, 2, 3], 10);
 			addAnimation("jump", [2]);
 			addAnimation("attack", [4,5,6],10);
@@ -35,9 +37,7 @@ package
 		}
 		
 		override public function update():void 
-		{
-			acceleration.x = 0;
-			
+		{	
 			if (velocity.y != 0)
 				play("jump");
 			else

@@ -50,6 +50,10 @@ package
 			
 			player = new Player();
 			add(player);
+			
+			FlxG.camera.bounds = new FlxRect(0, 0, 640, 240);
+			FlxG.camera.follow(player);
+			FlxG.camera.deadzone = new FlxRect(0, 0, 32, 240);
 		}
 		
 		override public function update():void 
