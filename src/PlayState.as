@@ -6,7 +6,7 @@ package
 	{
 	
 		public var level:FlxTilemap;
-		public var player:FlxSprite;
+		public var player:Player;
 		
 		override public function create():void 
 		{
@@ -48,12 +48,7 @@ package
 			level.loadMap(FlxTilemap.arrayToCSV(data, 40), FlxTilemap.ImgAuto, 0, 0, FlxTilemap.AUTO);
 			add(level);
 			
-			player = new FlxSprite(FlxG.width / 2 - 5);
-			player.makeGraphic(10, 12, 0xffff0000);
-			player.maxVelocity.x = 80;
-			player.maxVelocity.y = 200;
-			player.acceleration.y = 200;
-			player.drag.x = player.maxVelocity.x * 4;
+			player = new Player();
 			add(player);
 		}
 		
