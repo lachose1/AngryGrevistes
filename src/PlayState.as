@@ -10,6 +10,8 @@ package
 		public var coins:FlxGroup;
 
 		public const PLAYER_X:int = 32;
+		public const MIN_X_COIN:int = 55+8;
+		public const MAX_X_COIN:int = 155-8;
 
 		override public function create():void 
 		{
@@ -17,7 +19,7 @@ package
 			FlxG.bgColor = 0xffaaaaaa;
 			
 			coins = new FlxGroup();
-			createCoins();
+			//createCoins();
 			add(coins);
 			
 			//level = new Level();
@@ -43,6 +45,12 @@ package
 			{
 				player.loopback();
 				FlxG.camera.setBounds( 0, 0, 640, 240, true );
+				coins.clear();
+			}
+			
+			if (FlxG.camera.scroll.x == 0)
+			{
+				createWorld();
 			}
 			
 			super.update();
@@ -64,19 +72,27 @@ package
 			player.score += 5;
 		}
 		
-		public function createCoins():void
+		public function createWorld():void
 		{	
-			coins.add(new Coin(13+64,16));
-			coins.add(new Coin(14+64,16));
-			coins.add(new Coin(11+64,23));
-			coins.add(new Coin(12+64,23));
-			coins.add(new Coin(13+64,23));
-			coins.add(new Coin(14+64,23));
-			coins.add(new Coin(15+64,23));
-			coins.add(new Coin(22+64,26));
-			coins.add(new Coin(23+64,26));
-			coins.add(new Coin(27+64,20));
-			coins.add(new Coin(28+64,20));
+			createCoins(0);
+		}
+		
+		public function createCoins(displayType:int):void
+		{	
+			var random:Number = Math.floor(Math.random() * (MAX_X_COIN - MIN_X_COIN + 1));
+			
+			switch(displayType) {
+				case 0: //Ligne de 8 sous
+					for (var i:uint = 0; i < 8; i++)
+					{
+						coins.add(new Coin(random+i,20));
+					}
+					break;
+				case 1:
+					break;
+				default:
+					break;
+			}
 		}
 	}
 
