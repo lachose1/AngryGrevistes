@@ -10,7 +10,7 @@ package
 		public var coins:FlxGroup;
 
 		public const PLAYER_X:int = 32;
-		public const MIN_X_COIN:int = 55;
+		public const MIN_X_COIN:int = 55+8;
 		public const MAX_X_COIN:int = 155-8;
 
 		override public function create():void 

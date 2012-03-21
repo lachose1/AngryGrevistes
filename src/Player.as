@@ -23,7 +23,7 @@ package
 			
 			super(xPosition, FlxG.height - 24);
 			loadGraphic(ninjaImage, true, false, 16, 16);
-			maxVelocity.x = 80;
+			maxVelocity.x = 150;
 			maxVelocity.y = 400;
 			acceleration.y = 300;
 			drag.x = maxVelocity.x * 4;
