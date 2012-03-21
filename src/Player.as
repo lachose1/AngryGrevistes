@@ -6,6 +6,7 @@ package
 	public class Player extends FlxSprite
 	{
 		[Embed(source = '../res/ninja.png')] private var ninjaImage:Class;
+		[Embed(source = '../res/jump.mp3')] private var jumpSound:Class;
 		
 		private var gnd:Boolean;
 		public var score:uint;
@@ -60,7 +61,10 @@ package
 				play("normal");
 			
 			if ((FlxG.keys.justPressed("X") || FlxG.keys.justPressed("C")) && isTouching(FlxObject.FLOOR))
+			{
 				velocity.y = -maxVelocity.y / 2;
+				FlxG.play(jumpSound);
+			}
 			
 			super.update();
 		}
