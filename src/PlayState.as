@@ -5,6 +5,7 @@ package
 	public class PlayState extends FlxState
 	{
 		[Embed(source = '../res/rock.png')] private var rockImage:Class;
+		[Embed(source = '../res/coin.mp3')] private var coinSound:Class;
 		public var player:Player;
 		public var route:FlxTileblock;
 		public var coins:FlxGroup;
@@ -71,6 +72,7 @@ package
 		{
 			coin.kill();
 			player.score += 5;
+			FlxG.play(coinSound);
 		}
 		
 		public function createWorld():void
