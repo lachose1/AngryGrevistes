@@ -43,7 +43,7 @@ package
 			else
 				play("normal");
 			
-			if (FlxG.keys.justPressed("SPACE") && isTouching(FlxObject.FLOOR))
+			if ((FlxG.keys.justPressed("X") || FlxG.keys.justPressed("C")) && isTouching(FlxObject.FLOOR))
 				velocity.y = -maxVelocity.y / 2;
 			
 			super.update();

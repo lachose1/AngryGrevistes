@@ -16,6 +16,7 @@ package
 			
 			level = new Level(this);
 			add(level);
+			add(level.coins);
 			
 			player = new Player(PLAYER_X);
 			add(player);
