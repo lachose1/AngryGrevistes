@@ -11,8 +11,8 @@ package
 		public var coins:FlxGroup;
 
 		public const PLAYER_X:int = 32;
-		public const MIN_X_COIN:int = 30;
-		public const MAX_X_COIN:int = 130;
+		public const MIN_X_COIN:int = 42;
+		public const MAX_X_COIN:int = 142;
 		public const COINS_PATTERNS:int = 5;
 		public const SPAWN_WIDTH:int = 20;
 
@@ -22,12 +22,7 @@ package
 			FlxG.bgColor = 0xffaaaaaa;
 			
 			coins = new FlxGroup();
-			//createCoins();
 			add(coins);
-			
-			//level = new Level();
-			//add(level);
-			//add(level.coins);
 			
 			route = new FlxTileblock(0, 232, 1280 + 320, 8);
 			route.loadTiles(rockImage, 0, 0);
@@ -37,7 +32,6 @@ package
 			add(player);
 			add(player.scoreDisplay);
 
-			//FlxG.camera.bounds = new FlxRect(0, 0, 2560, 240);
 			FlxG.camera.follow(player);
 			FlxG.camera.deadzone = new FlxRect(0, 0, PLAYER_X, 240);
 		}
