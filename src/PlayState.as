@@ -44,7 +44,7 @@ package
 			if (FlxG.camera.scroll.x > 1280-32)
 			{
 				player.loopback();
-				FlxG.camera.setBounds( 0, 0, 640+640+640, 240, true );
+				FlxG.camera.setBounds( 16, 0, 2560, 240, true );
 				coins.clear();
 			}
 			
