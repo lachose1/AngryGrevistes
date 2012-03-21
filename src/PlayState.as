@@ -44,7 +44,7 @@ package
 			if (FlxG.camera.scroll.x > 1280-32)
 			{
 				player.loopback();
-				FlxG.camera.setBounds( 0, 0, 640, 240, true );
+				FlxG.camera.setBounds( 0, 0, 640+640+640, 240, true );
 				coins.clear();
 			}
 			
@@ -63,7 +63,7 @@ package
 				FlxG.resetState();
 				
 			//Garder un collision-checking bound pas trop grand sinon ça va foirer la mémoire
-			FlxG.camera.setBounds( FlxG.camera.scroll.x, FlxG.camera.scroll.y, FlxG.camera.scroll.x + 1280, 240, true );
+			FlxG.camera.setBounds( FlxG.camera.scroll.x, FlxG.camera.scroll.y, FlxG.camera.scroll.x + 640, 240, true );
 		}
 
 		public function getCoin(coin:Coin, player:Player):void
