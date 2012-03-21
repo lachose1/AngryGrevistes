@@ -20,7 +20,7 @@ package
 			add(level.coins);
 			
 			route = new FlxTileblock(0, 232, 5120, 8);
-			route.loadTiles(FlxTilemap.ImgAuto, 0, 0);
+			route.loadTiles(rockImage, 0, 0);
 			add(route);
 			
 			player = new Player(PLAYER_X);
