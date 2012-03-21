@@ -6,7 +6,6 @@ package
 	{
 		[Embed(source = '../res/rock.png')] private var rockImage:Class;
 		public var player:Player;
-		public var level:Level;
 		public var route:FlxTileblock;
 		public var coins:FlxGroup;
 
