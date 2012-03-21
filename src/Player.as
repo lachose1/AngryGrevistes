@@ -6,12 +6,21 @@ package
 	public class Player extends FlxSprite
 	{
 		[Embed(source = '../res/ninja.png')] private var ninjaImage:Class;
+		
 		private var gnd:Boolean;
+		public var score:uint;
+		public var scoreDisplay:FlxText;
 		
 		public function Player(xPosition:int) 
 		{
 			gnd = false;
-						
+			score = 0;
+			
+			scoreDisplay = new FlxText(2, 2, 80);
+			scoreDisplay.scrollFactor.x = scoreDisplay.scrollFactor.y = 0;
+			scoreDisplay.shadow = 0xff000000;
+			scoreDisplay.text = "SCORE: " + score;
+			
 			super(xPosition, FlxG.height - 64);
 			loadGraphic(ninjaImage, true, false, 16, 16);
 			maxVelocity.x = 80;
@@ -37,7 +46,9 @@ package
 		}
 		
 		override public function update():void 
-		{	
+		{
+			scoreDisplay.text = "SCORE: " + score;
+			
 			if (velocity.y != 0)
 				play("jump");
 			else
