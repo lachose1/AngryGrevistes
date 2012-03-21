@@ -13,6 +13,7 @@ package
 		{
 			level = new Level();
 			add(level);
+			add(level.coins);
 			
 			player = new Player(PLAYER_X);
 			add(player);

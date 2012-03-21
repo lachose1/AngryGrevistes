@@ -11,7 +11,7 @@ package
 		public function Coin(X:uint, Y:uint)
 		{
 			super(X * TILE_SIZE + X_OFFSET, Y * TILE_SIZE + Y_OFFSET);
-			coin.makeGraphic(2,4,0xffffff00);
+			super.makeGraphic(2,4,0xffffff00);
 		}
 		
 		static public function getCoin(coin:Coin, player:Player):void

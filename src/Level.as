@@ -8,6 +8,7 @@ package
 	{
 		public var level:FlxTilemap;
 		public var levelWidth:int;
+		public var coins:FlxGroup;
 		
 		public function Level() 
 		{
@@ -46,6 +47,24 @@ package
 			FlxG.bgColor = 0xffaaaaaa;
 			
 			loadMap(FlxTilemap.arrayToCSV(data, 40), FlxTilemap.ImgAuto, 0, 0, FlxTilemap.AUTO);
+			
+			coins = new FlxGroup();
+			createCoins();
+		}
+		
+		private function createCoins():void
+		{	
+			coins.add(new Coin(13,16));
+			coins.add(new Coin(14,16));
+			coins.add(new Coin(11,23));
+			coins.add(new Coin(12,23));
+			coins.add(new Coin(13,23));
+			coins.add(new Coin(14,23));
+			coins.add(new Coin(15,23));
+			coins.add(new Coin(22,26));
+			coins.add(new Coin(23,26));
+			coins.add(new Coin(27,20));
+			coins.add(new Coin(28,20));
 		}
 	}
 
