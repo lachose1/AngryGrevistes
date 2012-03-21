@@ -10,7 +10,7 @@ package
 		public var coins:FlxGroup;
 
 		public const PLAYER_X:int = 32;
-		public const MIN_X_COIN:int = 55+8;
+		public const MIN_X_COIN:int = 55;
 		public const MAX_X_COIN:int = 155-8;
 
 		override public function create():void 
@@ -74,7 +74,7 @@ package
 		
 		public function createWorld():void
 		{	
-			createCoins(0);
+			createCoins(Math.floor(Math.random()*(1-0+1)));
 		}
 		
 		public function createCoins(displayType:int):void
@@ -88,7 +88,16 @@ package
 						coins.add(new Coin(random+i,20));
 					}
 					break;
-				case 1:
+				case 1: //X de 9 sous
+					coins.add(new Coin(random, 18));
+					coins.add(new Coin(random, 22));
+					coins.add(new Coin(random+1, 19));
+					coins.add(new Coin(random+1, 21));
+					coins.add(new Coin(random+2, 20));
+					coins.add(new Coin(random+3, 19));
+					coins.add(new Coin(random+3, 21));
+					coins.add(new Coin(random+4, 18));
+					coins.add(new Coin(random+4, 22));
 					break;
 				default:
 					break;
