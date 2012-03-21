@@ -6,18 +6,21 @@ package
 	{
 		public var player:Player;
 		public var level:Level;
+		public var bossMode:Boolean;
 		
 		public const PLAYER_X:int = 32;
 		
 		override public function create():void 
 		{
-			level = new Level();
+			bossMode = false;
+			
+			level = new Level(this);
 			add(level);
 			
 			player = new Player(PLAYER_X);
 			add(player);
 						
-			FlxG.camera.bounds = new FlxRect(0, 0, 640, 240);
+			FlxG.camera.bounds = new FlxRect(0, 0, level.levelWidth, 240);
 			FlxG.camera.follow(player);
 			FlxG.camera.deadzone = new FlxRect(0, 0, PLAYER_X, 240);
 		}
