@@ -17,6 +17,7 @@ package
 			
 			player = new Player(PLAYER_X);
 			add(player);
+			add(player.scoreDisplay);
 						
 			FlxG.camera.bounds = new FlxRect(0, 0, 640, 240);
 			FlxG.camera.follow(player);
@@ -27,10 +28,18 @@ package
 		{		
 			super.update();
 			
+			FlxG.overlap(level.coins, player, getCoin);
+			
 			FlxG.collide(level, player);
 			
 			if (player.y > FlxG.height)
 				FlxG.resetState();
+		}
+		
+		public function getCoin(coin:Coin, player:Player):void
+		{
+			coin.kill();
+			player.score += 5;
 		}
 	}
 
