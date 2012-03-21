@@ -47,7 +47,7 @@ package
 		
 		public function loopback():void
 		{
-			reset(32, this.y);
+			this.x = 32;
 		}
 		
 		override public function update():void 
