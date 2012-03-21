@@ -11,7 +11,8 @@ package
 
 		public const PLAYER_X:int = 32;
 		public const MIN_X_COIN:int = 55+8;
-		public const MAX_X_COIN:int = 155-8;
+		public const MAX_X_COIN:int = 155 - 8;
+		public const COINS_PATTERNS:int = 5;
 
 		override public function create():void 
 		{
@@ -74,32 +75,32 @@ package
 		
 		public function createWorld():void
 		{	
-			for ( var i:uint = 1; i < 2; i++)
+			for ( var i:uint = 1; i < COINS_PATTERNS+1; i++)
 				createCoins(Math.floor(Math.random()*2), i);
 		}
 		
 		public function createCoins(displayType:int, patternPosition:int):void
 		{	
-			var random:Number = Math.floor(Math.random() * (MAX_X_COIN - MIN_X_COIN + 1) + MIN_X_COIN);
+			var random:Number = Math.floor(Math.random() * (20*patternPosition) - 16 + MIN_X_COIN);
 			
 			switch(displayType) 
 			{
 				case 0: //Ligne de 8 sous
 					for (var i:uint = 0; i < 8; i++)
 					{
-						coins.add(new Coin(random + i, 20));
+						coins.add(new Coin(random + i - 4 , 20));
 					}
 					break;
 				case 1: //X de 9 sous
-					coins.add(new Coin(random, 18));
-					coins.add(new Coin(random, 22));
+					coins.add(new Coin(random - 2, 18));
+					coins.add(new Coin(random - 2, 22));
+					coins.add(new Coin(random - 1, 19));
+					coins.add(new Coin(random - 1, 21));
+					coins.add(new Coin(random, 20));
 					coins.add(new Coin(random + 1, 19));
 					coins.add(new Coin(random + 1, 21));
-					coins.add(new Coin(random + 2, 20));
-					coins.add(new Coin(random + 3, 19));
-					coins.add(new Coin(random + 3, 21));
-					coins.add(new Coin(random + 4, 18));
-					coins.add(new Coin(random + 4, 22));
+					coins.add(new Coin(random + 2, 18));
+					coins.add(new Coin(random + 2, 22));
 					break;
 				default:
 					break;
