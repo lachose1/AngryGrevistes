@@ -8,16 +8,22 @@ package
 		public var player:Player;
 		public var level:Level;
 		public var route:FlxTileblock;
+		public var coins:FlxGroup;
 
 		public const PLAYER_X:int = 32;
 
 		override public function create():void 
 		{
 			FlxU.bound(0, 0, 0);
+			FlxG.bgColor = 0xffaaaaaa;
 			
-			level = new Level();
+			coins = new FlxGroup();
+			createCoins();
+			add(coins);
+			
+			//level = new Level();
 			//add(level);
-			add(level.coins);
+			//add(level.coins);
 			
 			route = new FlxTileblock(0, 232, 1280+640, 8);
 			route.loadTiles(rockImage, 0, 0);
@@ -42,7 +48,7 @@ package
 			
 			super.update();
 
-			FlxG.overlap(level.coins, player, getCoin);
+			FlxG.overlap(coins, player, getCoin);
 
 			FlxG.collide(route, player);
 
@@ -57,6 +63,21 @@ package
 		{
 			coin.kill();
 			player.score += 5;
+		}
+		
+		public function createCoins():void
+		{	
+			coins.add(new Coin(13+64,16));
+			coins.add(new Coin(14+64,16));
+			coins.add(new Coin(11+64,23));
+			coins.add(new Coin(12+64,23));
+			coins.add(new Coin(13+64,23));
+			coins.add(new Coin(14+64,23));
+			coins.add(new Coin(15+64,23));
+			coins.add(new Coin(22+64,26));
+			coins.add(new Coin(23+64,26));
+			coins.add(new Coin(27+64,20));
+			coins.add(new Coin(28+64,20));
 		}
 	}
 
