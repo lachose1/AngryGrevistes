@@ -33,7 +33,13 @@ package
 		}
 
 		override public function update():void 
-		{					
+		{			
+			if (FlxG.camera.scroll.x > 1280)
+			{
+				player.loopback();
+				FlxG.camera.setBounds( 0, 0, 640, 240, true );
+			}
+			
 			super.update();
 
 			FlxG.overlap(level.coins, player, getCoin);

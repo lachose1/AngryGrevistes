@@ -21,7 +21,7 @@ package
 			scoreDisplay.shadow = 0xff000000;
 			scoreDisplay.text = "SCORE: " + score;
 			
-			super(xPosition, FlxG.height - 64);
+			super(xPosition, FlxG.height - 24);
 			loadGraphic(ninjaImage, true, false, 16, 16);
 			maxVelocity.x = 80;
 			maxVelocity.y = 400;
@@ -43,6 +43,11 @@ package
 		public function isGND():Boolean
 		{
 			return gnd;
+		}
+		
+		public function loopback():void
+		{
+			reset(32, this.y);
 		}
 		
 		override public function update():void 

@@ -54,17 +54,17 @@ package
 
 		private function createCoins():void
 		{	
-			coins.add(new Coin(13,16));
-			coins.add(new Coin(14,16));
-			coins.add(new Coin(11,23));
-			coins.add(new Coin(12,23));
-			coins.add(new Coin(13,23));
-			coins.add(new Coin(14,23));
-			coins.add(new Coin(15,23));
-			coins.add(new Coin(22,26));
-			coins.add(new Coin(23,26));
-			coins.add(new Coin(27,20));
-			coins.add(new Coin(28,20));
+			coins.add(new Coin(13+64,16));
+			coins.add(new Coin(14+64,16));
+			coins.add(new Coin(11+64,23));
+			coins.add(new Coin(12+64,23));
+			coins.add(new Coin(13+64,23));
+			coins.add(new Coin(14+64,23));
+			coins.add(new Coin(15+64,23));
+			coins.add(new Coin(22+64,26));
+			coins.add(new Coin(23+64,26));
+			coins.add(new Coin(27+64,20));
+			coins.add(new Coin(28+64,20));
 		}
 	}
 
