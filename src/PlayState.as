@@ -74,30 +74,31 @@ package
 		
 		public function createWorld():void
 		{	
-			createCoins(Math.floor(Math.random()*(1-0+1)));
+			createCoins(Math.floor(Math.random()*2));
 		}
 		
 		public function createCoins(displayType:int):void
 		{	
-			var random:Number = Math.floor(Math.random() * (MAX_X_COIN - MIN_X_COIN + 1));
+			var random:Number = Math.floor(Math.random() * (MAX_X_COIN - MIN_X_COIN + 1) + MIN_X_COIN);
 			
-			switch(displayType) {
+			switch(displayType) 
+			{
 				case 0: //Ligne de 8 sous
 					for (var i:uint = 0; i < 8; i++)
 					{
-						coins.add(new Coin(random+i,20));
+						coins.add(new Coin(random + i, 20));
 					}
 					break;
 				case 1: //X de 9 sous
 					coins.add(new Coin(random, 18));
 					coins.add(new Coin(random, 22));
-					coins.add(new Coin(random+1, 19));
-					coins.add(new Coin(random+1, 21));
-					coins.add(new Coin(random+2, 20));
-					coins.add(new Coin(random+3, 19));
-					coins.add(new Coin(random+3, 21));
-					coins.add(new Coin(random+4, 18));
-					coins.add(new Coin(random+4, 22));
+					coins.add(new Coin(random + 1, 19));
+					coins.add(new Coin(random + 1, 21));
+					coins.add(new Coin(random + 2, 20));
+					coins.add(new Coin(random + 3, 19));
+					coins.add(new Coin(random + 3, 21));
+					coins.add(new Coin(random + 4, 18));
+					coins.add(new Coin(random + 4, 22));
 					break;
 				default:
 					break;
