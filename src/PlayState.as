@@ -7,6 +7,7 @@ package
 	
 		public var level:FlxTilemap;
 		public var player:Player;
+		public const PLAYER_X:int = 32;
 		
 		override public function create():void 
 		{
@@ -48,12 +49,12 @@ package
 			level.loadMap(FlxTilemap.arrayToCSV(data, 40), FlxTilemap.ImgAuto, 0, 0, FlxTilemap.AUTO);
 			add(level);
 			
-			player = new Player();
+			player = new Player(PLAYER_X);
 			add(player);
-			
+						
 			FlxG.camera.bounds = new FlxRect(0, 0, 640, 240);
 			FlxG.camera.follow(player);
-			FlxG.camera.deadzone = new FlxRect(0, 0, 32, 240);
+			FlxG.camera.deadzone = new FlxRect(0, 0, PLAYER_X, 240);
 		}
 		
 		override public function update():void 
