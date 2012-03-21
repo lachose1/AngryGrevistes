@@ -19,7 +19,7 @@ package
 			//add(level);
 			add(level.coins);
 			
-			route = new FlxTileblock(0, 232, 5120, 8);
+			route = new FlxTileblock(0, 232, 1280+640, 8);
 			route.loadTiles(rockImage, 0, 0);
 			add(route);
 			
@@ -34,7 +34,7 @@ package
 
 		override public function update():void 
 		{			
-			if (FlxG.camera.scroll.x > 1280)
+			if (FlxG.camera.scroll.x > 1280-32)
 			{
 				player.loopback();
 				FlxG.camera.setBounds( 0, 0, 640, 240, true );
