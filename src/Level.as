@@ -46,8 +46,8 @@ package
 
 			FlxG.bgColor = 0xffaaaaaa;
 
-			loadMap(FlxTilemap.arrayToCSV(data, 40), FlxTilemap.ImgAuto, 0, 0, FlxTilemap.AUTO);
-
+			//loadMap(FlxTilemap.arrayToCSV(data, 40), FlxTilemap.ImgAuto, 0, 0, FlxTilemap.AUTO);
+			
 			coins = new FlxGroup();
 			createCoins();
 		}
