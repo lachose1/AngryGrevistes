@@ -11,7 +11,7 @@ package
 		public var coins:FlxGroup;
 
 		public const PLAYER_X:int = 32;
-		public const MIN_X_COIN:int = 30;
+		public const MIN_X_COIN:int = 35;
 		public const MAX_X_COIN:int = 130;
 		public const COINS_PATTERNS:int = 5;
 		public const SPAWN_WIDTH:int = 20;
