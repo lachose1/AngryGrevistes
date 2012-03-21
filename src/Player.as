@@ -8,11 +8,11 @@ package
 		[Embed(source = '../res/ninja.png')] private var ninjaImage:Class;
 		private var gnd:Boolean;
 		
-		public function Player(PLAYER_X:int) 
+		public function Player(xPosition:int) 
 		{
 			gnd = false;
 						
-			super(PLAYER_X, FlxG.height - 64);
+			super(xPosition, FlxG.height - 64);
 			loadGraphic(ninjaImage, true, false, 16, 16);
 			maxVelocity.x = 80;
 			maxVelocity.y = 400;
