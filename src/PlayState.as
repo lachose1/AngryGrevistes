@@ -74,10 +74,11 @@ package
 		
 		public function createWorld():void
 		{	
-			createCoins(Math.floor(Math.random()*2));
+			for ( var i:uint = 1; i < 2; i++)
+				createCoins(Math.floor(Math.random()*2), i);
 		}
 		
-		public function createCoins(displayType:int):void
+		public function createCoins(displayType:int, patternPosition:int):void
 		{	
 			var random:Number = Math.floor(Math.random() * (MAX_X_COIN - MIN_X_COIN + 1) + MIN_X_COIN);
 			
