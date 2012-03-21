@@ -9,6 +9,8 @@ package
 		[Embed(source = '../res/jump.mp3')] private var jumpSound:Class;
 		
 		private var gnd:Boolean;
+		private var jumped:Boolean;
+		private var doubleJumped:Boolean;
 		public var score:uint;
 		public var scoreDisplay:FlxText;
 		
@@ -57,12 +59,23 @@ package
 			if (velocity.y != 0)
 				play("jump");
 			else
+			{
 				play("normal");
+				jumped = false;
+				doubleJumped = false;
+			}
 			
 			if ((FlxG.keys.justPressed("X") || FlxG.keys.justPressed("C")) && isTouching(FlxObject.FLOOR))
 			{
 				velocity.y = -maxVelocity.y / 2;
 				FlxG.play(jumpSound);
+				jumped = true;
+			}
+			else if ((FlxG.keys.justPressed("X") || FlxG.keys.justPressed("C")) && jumped && !doubleJumped)
+			{
+				velocity.y = -maxVelocity.y / 2;
+				FlxG.play(jumpSound);
+				doubleJumped = true;
 			}
 			
 			super.update();
