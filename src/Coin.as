@@ -6,8 +6,8 @@ package
 	{
 		[Embed(source = '../res/coin.png')] private var coinImage:Class;
 		
-		public const X_OFFSET:uint = 3;
-		public const Y_OFFSET:uint = 2;
+		public const X_OFFSET:uint = 0;
+		public const Y_OFFSET:uint = 0;
 		public const TILE_SIZE:uint = 8;
 		
 		public function Coin(X:uint, Y:uint)
