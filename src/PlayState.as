@@ -61,6 +61,8 @@ package
 			super.update();
 
 			FlxG.overlap(coins, player, getCoin);
+			
+			//FlxG.overlap(cops, player, handlePoliceCollision);
 
 			FlxG.collide(route, player);
 
@@ -76,6 +78,11 @@ package
 			coin.kill();
 			player.score += 5;
 			FlxG.play(coinSound);
+		}
+		
+		public function handlePoliceCollision(police:Police, player:Player):void
+		{
+			player.kill();
 		}
 		
 		public function createWorld():void
