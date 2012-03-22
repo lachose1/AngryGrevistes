@@ -9,6 +9,8 @@ package
 		public var player:Player;
 		public var route:FlxTileblock;
 		public var coins:FlxGroup;
+		public var cops:FlxGroup;
+		public var mesrq:FlxGroup;
 
 		public const PLAYER_X:int = 32;
 		public const MIN_X_COIN:int = 42;
@@ -25,6 +27,9 @@ package
 			
 			coins = new FlxGroup();
 			add(coins);
+			
+			mesrq = new FlxGroup();
+			add(mesrq);
 			
 			route = new FlxTileblock(0, 232, 1280 + 320, 8);
 			route.loadTiles(rockImage, 0, 0);
@@ -45,6 +50,7 @@ package
 				player.loopback();
 				FlxG.camera.setBounds( 0, 0, 320, 240, true );
 				coins.clear();
+				mesrq.clear();
 			}
 			
 			if (FlxG.camera.scroll.x == 0)
@@ -75,7 +81,8 @@ package
 		public function createWorld():void
 		{	
 			for ( var i:uint = 0; i < COINS_PATTERNS; ++i)
-				createCoins(Math.floor(Math.random()*2), i);
+				createCoins(Math.floor(Math.random() * 2), i);
+			createArielle();
 		}
 		
 		public function createCoins(patternType:uint, patternNumber:uint):void
@@ -110,9 +117,14 @@ package
 			}
 		}
 		
-		public function createPolice(patternType:uint, patterNumber:uint):void
+		public function createPolice(patternType:uint, patternNumber:uint):void
 		{
 			
+		}
+		
+		public function createArielle():void
+		{
+			mesrq.add(new Arielle(55, 20));
 		}
 	}
 
