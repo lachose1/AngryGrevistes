@@ -80,6 +80,12 @@ package
 			
 			super.update();
 		}
+		
+		override public function kill():void
+		{
+			//FlxG.play(deathSound);
+			reset(32, FlxG.height - 24);
+		}
 	}
 
 }

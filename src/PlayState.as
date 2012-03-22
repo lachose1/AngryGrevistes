@@ -9,6 +9,7 @@ package
 		public var player:Player;
 		public var route:FlxTileblock;
 		public var coins:FlxGroup;
+		public var cops:FlxGroup;
 
 		public const PLAYER_X:int = 32;
 		public const MIN_X_COIN:int = 42;
@@ -55,6 +56,8 @@ package
 			super.update();
 
 			FlxG.overlap(coins, player, getCoin);
+			
+			FlxG.overlap(cops, player, handlePoliceCollision);
 
 			FlxG.collide(route, player);
 
@@ -70,6 +73,11 @@ package
 			coin.kill();
 			player.score += 5;
 			FlxG.play(coinSound);
+		}
+		
+		public function handlePoliceCollision(police:Police, player:Player):void
+		{
+			player.kill();
 		}
 		
 		public function createWorld():void
