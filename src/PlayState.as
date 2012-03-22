@@ -13,11 +13,12 @@ package
 
 		public const PLAYER_X:int = 32;
 		public const MIN_X_COIN:int = 42;
-		public const MAX_X_COIN:int = 142;
 		public const COINS_PATTERNS:int = 5;
 		public const COIN_SPAWN_WIDTH:int = 20;
-		public const MIN_X_POLICE:int = 10;
-		public const MAX_Y_POLICE:int = 6;
+		public const MIN_X_POLICE:int = 42;
+		public const MAX_Y_POLICE:int = 25;
+		public const COP_SPAWN_WIDTH:int = 30;
+		public const COP_PATTERNS:int = 3;
 
 		override public function create():void 
 		{
@@ -26,6 +27,9 @@ package
 			
 			coins = new FlxGroup();
 			add(coins);
+			
+			cops = new FlxGroup();
+			add(cops);
 			
 			route = new FlxTileblock(0, 232, 1280 + 320, 8);
 			route.loadTiles(rockImage, 0, 0);
@@ -46,6 +50,7 @@ package
 				player.loopback();
 				FlxG.camera.setBounds( 0, 0, 320, 240, true );
 				coins.clear();
+				cops.clear();
 			}
 			
 			if (FlxG.camera.scroll.x == 0)
@@ -83,7 +88,9 @@ package
 		public function createWorld():void
 		{	
 			for ( var i:uint = 0; i < COINS_PATTERNS; ++i)
-				createCoins(Math.floor(Math.random()*2), i);
+				createCoins(Math.floor(Math.random() * 2), i);
+			for (i = 0; i < COP_PATTERNS; ++i)
+				createPolice(Math.floor(Math.random() * 2), i);
 		}
 		
 		public function createCoins(patternType:uint, patternNumber:uint):void
@@ -118,9 +125,22 @@ package
 			}
 		}
 		
-		public function createPolice(patternType:uint, patterNumber:uint):void
+		public function createPolice(patternType:uint, patternNumber:uint):void
 		{
+			var random:Number = Math.floor(Math.random() * COP_SPAWN_WIDTH + MIN_X_POLICE + patternNumber * COP_SPAWN_WIDTH);
 			
+			switch(patternType) 
+			{
+				case 0: //1 verticalement
+					cops.add(new Police(random, MAX_Y_POLICE));
+					break;
+				case 1: //2 verticalement
+					cops.add(new Police(random, MAX_Y_POLICE));
+					cops.add(new Police(random, MAX_Y_POLICE - 4));
+					break;
+				default:
+					break;
+			}
 		}
 	}
 
