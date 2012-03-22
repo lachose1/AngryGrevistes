@@ -69,7 +69,7 @@ package
 
 			FlxG.overlap(coins, player, getCoin);
 			
-			//FlxG.overlap(cops, player, handlePoliceCollision);
+			FlxG.overlap(cops, player, handlePoliceCollision);
 
 			FlxG.collide(route, player);
 
