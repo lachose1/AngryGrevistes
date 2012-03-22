@@ -12,18 +12,18 @@ package
 		private var gnd:Boolean;
 		private var jumped:Boolean;
 		private var doubleJumped:Boolean;
-		public var score:uint;
+		public var scoreVal:uint;
 		public var scoreDisplay:FlxText;
 		
 		public function Player(xPosition:int) 
 		{
 			gnd = false;
-			score = 0;
+			scoreVal = 0;
 			
 			scoreDisplay = new FlxText(2, 2, 120);
 			scoreDisplay.scrollFactor.x = scoreDisplay.scrollFactor.y = 0;
 			scoreDisplay.shadow = 0xff000000;
-			scoreDisplay.text = "ECONOMIES: " + score + "$";
+			scoreDisplay.text = "ECONOMIES: " + scoreVal + "$";
 			
 			super(xPosition, FlxG.height - 40);
 			loadGraphic(ninjaImage, true, false, 25, 32);
@@ -53,7 +53,7 @@ package
 		
 		override public function update():void 
 		{
-			scoreDisplay.text = "ECONOMIES: " + score + "$";
+			scoreDisplay.text = "ECONOMIES: " + scoreVal + "$";
 			
 			if (velocity.y != 0)
 				play("jump");

@@ -18,8 +18,8 @@ package
 		public const COIN_SPAWN_WIDTH:int = 20;
 		public const MIN_X_POLICE:int = 42;
 		public const MAX_Y_POLICE:int = 25;
-		public const COP_SPAWN_WIDTH:int = 30;
-		public const COP_PATTERNS:int = 3;
+		public const COP_SPAWN_WIDTH:int = 50;
+		public const COP_PATTERNS:int = 2;
 		public const MIN_X_ARIELLE:int = 55;
 		public const MAX_X_ARIELLE:int = 155;
 
@@ -72,9 +72,6 @@ package
 			FlxG.overlap(cops, player, handlePoliceCollision);
 
 			FlxG.collide(route, player);
-
-			if (player.y > FlxG.height)
-				FlxG.resetState();
 				
 			//Garder un collision-checking bound pas trop grand sinon ça va foirer la mémoire
 			FlxG.camera.setBounds( FlxG.camera.scroll.x, FlxG.camera.scroll.y, FlxG.camera.scroll.x + 640, 240, true );
@@ -83,13 +80,18 @@ package
 		public function getCoin(coin:Coin, player:Player):void
 		{
 			coin.kill();
-			player.score += 5;
+			player.scoreVal += 5;
 			FlxG.play(coinSound);
 		}
 		
 		public function handlePoliceCollision(police:Police, player:Player):void
 		{
-			player.kill();
+				player.kill();
+				FlxG.camera.setBounds( 0, 0, 320, 240, true );
+				coins.clear();
+				cops.clear();
+				mesrq.clear();
+				createWorld();
 		}
 		
 		public function createWorld():void
