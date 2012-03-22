@@ -39,6 +39,9 @@ package
 			addAnimation("dead", [4, 4, 4], 5);
 			
 			play("normal");
+			
+			width = 12;
+			height = 32;
 		}
 		
 		public function isGND():Boolean

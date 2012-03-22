@@ -17,6 +17,9 @@ package
 			loadGraphic(policeImage, true, false, WIDTH, HEIGHT);
 			addAnimation("hitting", [0, 1], 5);
 			
+			width = 16;
+			height = 16;
+			
 			play("hitting");
 		}
 		
