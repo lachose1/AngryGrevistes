@@ -14,7 +14,9 @@ package
 		public const MIN_X_COIN:int = 42;
 		public const MAX_X_COIN:int = 142;
 		public const COINS_PATTERNS:int = 5;
-		public const SPAWN_WIDTH:int = 20;
+		public const COIN_SPAWN_WIDTH:int = 20;
+		public const MIN_X_POLICE:int = 10;
+		public const MAX_Y_POLICE:int = 6;
 
 		override public function create():void 
 		{
@@ -31,7 +33,7 @@ package
 			player = new Player(PLAYER_X);
 			add(player);
 			add(player.scoreDisplay);
-
+			
 			FlxG.camera.follow(player);
 			FlxG.camera.deadzone = new FlxRect(0, 0, PLAYER_X, 240);
 		}
@@ -76,14 +78,14 @@ package
 				createCoins(Math.floor(Math.random()*2), i);
 		}
 		
-		public function createCoins(displayType:int, patternNumber:int):void
+		public function createCoins(patternType:uint, patternNumber:uint):void
 		{	
-			var random:Number = Math.floor(Math.random() * SPAWN_WIDTH + MIN_X_COIN + patternNumber * SPAWN_WIDTH);
+			var random:Number = Math.floor(Math.random() * COIN_SPAWN_WIDTH + MIN_X_COIN + patternNumber * COIN_SPAWN_WIDTH);
 			
-			switch(displayType) 
+			switch(patternType) 
 			{
 				case 0: //Ligne de 8 sous
-					if (((random - MIN_X_COIN) % SPAWN_WIDTH) > (SPAWN_WIDTH - 8))
+					if (((random - MIN_X_COIN) % COIN_SPAWN_WIDTH) > (COIN_SPAWN_WIDTH - 8))
 						random -= 8;
 					for (var i:uint = 0; i < 8; ++i)
 					{
@@ -91,7 +93,7 @@ package
 					}
 					break;
 				case 1: //X de 9 sous
-					if (((random - MIN_X_COIN) % SPAWN_WIDTH) > (SPAWN_WIDTH - 5))
+					if (((random - MIN_X_COIN) % COIN_SPAWN_WIDTH) > (COIN_SPAWN_WIDTH - 5))
 						random -= 5;					
 					coins.add(new Coin(random, 18));
 					coins.add(new Coin(random, 22));
@@ -106,6 +108,11 @@ package
 				default:
 					break;
 			}
+		}
+		
+		public function createPolice(patternType:uint, patterNumber:uint):void
+		{
+			
 		}
 	}
 
