@@ -155,7 +155,7 @@ package
 		public function createArielle():void
 		{
 			var random:Number = Math.floor(Math.random() * (MAX_X_ARIELLE - MIN_X_ARIELLE) + MIN_X_ARIELLE);
-				mesrq.add(new Arielle(random, 20));
+				mesrq.add(new Arielle(random, 20, player));
 		}
 	}
 

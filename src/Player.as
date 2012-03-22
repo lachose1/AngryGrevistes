@@ -19,14 +19,14 @@ package
 			gnd = false;
 			score = 0;
 			
-			scoreDisplay = new FlxText(2, 2, 80);
+			scoreDisplay = new FlxText(2, 2, 120);
 			scoreDisplay.scrollFactor.x = scoreDisplay.scrollFactor.y = 0;
 			scoreDisplay.shadow = 0xff000000;
-			scoreDisplay.text = "SCORE: " + score;
+			scoreDisplay.text = "ECONOMIES: " + score + "$";
 			
 			super(xPosition, FlxG.height - 40);
 			loadGraphic(ninjaImage, true, false, 25, 32);
-			maxVelocity.x = 150;
+			maxVelocity.x = 200;
 			maxVelocity.y = 400;
 			acceleration.y = 300;
 			
@@ -52,7 +52,7 @@ package
 		
 		override public function update():void 
 		{
-			scoreDisplay.text = "SCORE: " + score;
+			scoreDisplay.text = "ECONOMIES: " + score + "$";
 			
 			if (velocity.y != 0)
 				play("jump");
