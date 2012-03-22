@@ -8,11 +8,11 @@ package
 		
 		public const TILE_SIZE:uint = 17;
 		
-		public function Arielle() 
+		public function Arielle(X:uint, Y:uint) 
 		{
-			super(X * TILE_SIZE, Y * TILE_SIZE);
+			super(X * 8, Y * 8);
 			loadGraphic(metroidImage, true, false, 17, 17);
-			addAnimation("normal", [0, 1], 10);
+			addAnimation("normal", [0, 1], 5);
 			
 			play("normal");
 		}
