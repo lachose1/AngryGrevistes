@@ -47,7 +47,7 @@ package
 		
 		public function loopback():void
 		{
-			this.x = 32;
+			x = 32;
 		}
 		
 		override public function update():void 
@@ -82,7 +82,7 @@ package
 		override public function kill():void
 		{
 			//FlxG.play(deathSound);
-			reset(32, FlxG.height - 24);
+			loopback();
 		}
 	}
 
