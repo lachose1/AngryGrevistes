@@ -20,6 +20,8 @@ package
 		public const MAX_Y_POLICE:int = 25;
 		public const COP_SPAWN_WIDTH:int = 30;
 		public const COP_PATTERNS:int = 3;
+		public const MIN_X_ARIELLE:int = 55;
+		public const MAX_X_ARIELLE:int = 155;
 
 		override public function create():void 
 		{
@@ -96,7 +98,8 @@ package
 				createCoins(Math.floor(Math.random() * 2), i);
 			for (i = 0; i < COP_PATTERNS; ++i)
 				createPolice(Math.floor(Math.random() * 2), i);
-			createArielle();
+			if (Math.random() > 0.5)
+				createArielle();
 		}
 		
 		public function createCoins(patternType:uint, patternNumber:uint):void
@@ -151,7 +154,8 @@ package
 		
 		public function createArielle():void
 		{
-			mesrq.add(new Arielle(55, 20));
+			var random:Number = Math.floor(Math.random() * (MAX_X_ARIELLE - MIN_X_ARIELLE) + MIN_X_ARIELLE);
+				mesrq.add(new Arielle(random, 20));
 		}
 	}
 
