@@ -24,20 +24,18 @@ package
 			scoreDisplay.shadow = 0xff000000;
 			scoreDisplay.text = "SCORE: " + score;
 			
-			super(xPosition, FlxG.height - 24);
-			loadGraphic(ninjaImage, true, false, 16, 16);
+			super(xPosition, FlxG.height - 40);
+			loadGraphic(ninjaImage, true, false, 25, 32);
 			maxVelocity.x = 150;
 			maxVelocity.y = 400;
 			acceleration.y = 300;
 			
 			acceleration.x = maxVelocity.x * 4;
 			
-			addAnimation("normal", [0, 1, 2, 3], 10);
-			addAnimation("jump", [2]);
-			addAnimation("attack", [4,5,6],10);
+			addAnimation("normal", [0, 1, 2], 10);
+			addAnimation("jump", [3]);
 			addAnimation("stopped", [0]);
-			addAnimation("hurt", [2,7],10);
-			addAnimation("dead", [7, 7, 7], 5);
+			addAnimation("dead", [4, 4, 4], 5);
 			
 			play("normal");
 		}
