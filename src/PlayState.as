@@ -6,6 +6,7 @@ package
 	{
 		[Embed(source = '../res/rock.png')] private var rockImage:Class;
 		[Embed(source = '../res/coin.mp3')] private var coinSound:Class;
+		[Embed(source = '../res/securitypipetwo.mp3')] private var gameMusic:Class;
 		public var player:Player;
 		public var route:FlxTileblock;
 		public var coins:FlxGroup;
@@ -51,6 +52,7 @@ package
 			
 			FlxG.camera.follow(player);
 			FlxG.camera.deadzone = new FlxRect(0, 0, PLAYER_X, 240);
+			FlxG.playMusic(gameMusic, 0.8);
 		}
 
 		override public function update():void 
