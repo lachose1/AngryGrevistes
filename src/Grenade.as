@@ -25,6 +25,11 @@ package
 			velocity.x = -150;
 		}
 		
+		public function Aim():void
+		{
+			//A faire, c'est ca qui va faire appartire une mire avant de lancer la grenade
+		}
+		
 		override public function update():void 
 		{
 			if (player.x > x - 350)
