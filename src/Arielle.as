@@ -8,11 +8,11 @@ package
 		
 		public var player:Player;
 		
-		public const TILE_SIZE:uint = 17;
+		public const TILE_SIZE:uint = 8;
 		
 		public function Arielle(X:uint, Y:uint, playerRef:Player) 
 		{
-			super(X * 8, Y * 8);
+			super(X * TILE_SIZE, Y * TILE_SIZE);
 			loadGraphic(metroidImage, true, false, 17, 17);
 			addAnimation("normal", [0, 1], 5);
 			

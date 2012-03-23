@@ -4,11 +4,16 @@ package
 	
 	public class Grenade extends FlxSprite
 	{
-		//[Embed(source = '../res/police.png')] private var policeImage:Class;
-				
-		public function Grenade() 
+		[Embed(source = '../res/grenade.png')] private var grenadeImage:Class;
+		
+		public const TILE_SIZE:uint = 8;
+		public const WIDTH:uint = 16;
+		public const HEIGHT:uint = 16;
+		
+		public function Grenade(X:uint, Y:uint) 
 		{
-
+			super(X * TILE_SIZE, Y * TILE_SIZE);
+			loadGraphic(grenadeImage, true, false, WIDTH, HEIGHT);
 		}
 		
 	}

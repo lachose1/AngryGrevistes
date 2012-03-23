@@ -11,6 +11,7 @@ package
 		public var coins:FlxGroup;
 		public var cops:FlxGroup;
 		public var mesrq:FlxGroup;
+		public var grenades:FlxGroup;
 
 		public const PLAYER_X:int = 32;
 		public const MIN_X_COIN:int = 42;
@@ -37,6 +38,9 @@ package
 			mesrq = new FlxGroup();
 			add(mesrq);
 			
+			grenades = new FlxGroup();
+			add(grenades);
+			
 			route = new FlxTileblock(0, 232, 1280 + 320, 8);
 			route.loadTiles(rockImage, 0, 0);
 			add(route);
@@ -58,6 +62,7 @@ package
 				coins.clear();
 				cops.clear();
 				mesrq.clear();
+				grenades.clear();
 			}
 			
 			if (FlxG.camera.scroll.x == 0)
@@ -102,6 +107,7 @@ package
 				createPolice(Math.floor(Math.random() * 2), i);
 			if (Math.random() > 0.5)
 				createArielle();
+			createGrenades();
 		}
 		
 		public function createCoins(patternType:uint, patternNumber:uint):void
@@ -158,6 +164,12 @@ package
 		{
 			var random:Number = Math.floor(Math.random() * (MAX_X_ARIELLE - MIN_X_ARIELLE) + MIN_X_ARIELLE);
 				mesrq.add(new Arielle(random, 20, player));
+		}
+		
+		public function createGrenades():void
+		{
+			var random:Number = Math.floor(Math.random() * (MAX_X_ARIELLE - MIN_X_ARIELLE) + MIN_X_ARIELLE);
+				grenades.add(new Grenade(60, 20));
 		}
 	}
 
