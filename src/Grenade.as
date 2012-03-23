@@ -14,6 +14,8 @@ package
 		{
 			super(X * TILE_SIZE, Y * TILE_SIZE);
 			loadGraphic(grenadeImage, true, false, WIDTH, HEIGHT);
+			
+			velocity.x = -150;
 		}
 		
 	}

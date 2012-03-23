@@ -96,6 +96,7 @@ package
 				coins.clear();
 				cops.clear();
 				mesrq.clear();
+				grenades.clear();
 				createWorld();
 		}
 		
