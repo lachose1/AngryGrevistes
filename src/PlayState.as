@@ -170,7 +170,7 @@ package
 		public function createGrenades():void
 		{
 			var random:Number = Math.floor(Math.random() * (MAX_X_ARIELLE - MIN_X_ARIELLE) + MIN_X_ARIELLE);
-				grenades.add(new Grenade(60, 20));
+				grenades.add(new Grenade(100, 20, player));
 		}
 	}
 
