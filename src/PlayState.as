@@ -29,6 +29,8 @@ package
 		public const COP_PATTERNS:int = 2;
 		public const MIN_X_ARIELLE:int = 55;
 		public const MAX_X_ARIELLE:int = 155;
+		public const ARIELLE_SPAWN_HEIGHT:int = 15;
+		public const MAX_Y_ARIELLE:int = 25;
 		public const GRENADES_SPAWN_HEIGHT:int = 15;
 		public const MAX_Y_GRENADES:int = 25;
 		public const MIN_X_GRENADES:int = 67;
@@ -199,16 +201,19 @@ package
 		
 		public function createArielle():void
 		{
-			var random:Number = Math.floor(Math.random() * (MAX_X_ARIELLE - MIN_X_ARIELLE) + MIN_X_ARIELLE);
-				mesrq.add(new Arielle(random, 20, player));
+			var randomX:Number = Math.floor(Math.random() * (MAX_X_ARIELLE - MIN_X_ARIELLE) + MIN_X_ARIELLE);
+			var randomY:Number = Math.floor(-Math.random() * ARIELLE_SPAWN_HEIGHT + MAX_Y_ARIELLE);
+			
+			mesrq.add(new Arielle(randomX, randomY, player));
 		}
 		
 		public function createGrenades():void
 		{
-			var random:Number = Math.floor(Math.random() * (MAX_X_GRENADES - MIN_X_GRENADES) + MIN_X_GRENADES);
+			var randomX:Number = Math.floor(Math.random() * (MAX_X_GRENADES - MIN_X_GRENADES) + MIN_X_GRENADES);
 			var randomY:Number = Math.floor(-Math.random() * GRENADES_SPAWN_HEIGHT + MAX_Y_GRENADES);
-				grenades.add(new Grenade(random, randomY, player));
-				add(grenades.members[0].crosshair);
+			
+			grenades.add(new Grenade(randomX, randomY, player));
+			add(grenades.members[0].crosshair);
 		}
 		
 		public function clearAll():void
