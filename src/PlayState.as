@@ -108,7 +108,7 @@ package
 		public function createWorld():void
 		{	
 			for ( var i:uint = 0; i < COINS_PATTERNS; ++i)
-				createCoins(Math.floor(Math.random() * 2), i);
+				createCoins(Math.floor(Math.random() * 3), i);
 			for (i = 0; i < COP_PATTERNS; ++i)
 				createPolice(Math.floor(Math.random() * 2), i);
 			if (Math.random() > 0.5)
@@ -144,6 +144,17 @@ package
 					coins.add(new Coin(randomX + 4, randomY - 2));
 					coins.add(new Coin(randomX + 4, randomY + 2));
 					break;
+				case 2: //"Cercle" de 8 sous
+					if (((randomX - MIN_X_COIN) % COIN_SPAWN_WIDTH) > (COIN_SPAWN_WIDTH - 4))
+						randomX -= 4;
+					coins.add(new Coin(randomX, randomY - 1));
+					coins.add(new Coin(randomX, randomY - 2));
+					coins.add(new Coin(randomX + 1, randomY));
+					coins.add(new Coin(randomX + 1, randomY - 3));
+					coins.add(new Coin(randomX + 2, randomY));
+					coins.add(new Coin(randomX + 2, randomY - 3));
+					coins.add(new Coin(randomX + 3, randomY - 1));
+					coins.add(new Coin(randomX + 3, randomY - 2));
 				default:
 					break;
 			}
