@@ -1,0 +1,8 @@
+Notre jeu est en 320x240 et on double la résolution pour donner un effet "Pixelisé" comme les vieux jeux rétros
+La liste :
+-Changer le sprite du Ninja en Gabriel-Nadeau Dubois
+-Faire un Logo
+-Peut-être changer les cennes et les policiers si tu veux qu'ils fittent avec ton style
+-Peut-être changer la grenade en une fumigène comme celles qu'on a vu dans les derniers jours
+-Changer la roche pour une tuile qui ressemble plus à un trotoir
+-Faire un sprite moyennement gros de Line beauchamp en robot ou en monstre whatever, c'est le boss du jeu :P
