@@ -7,7 +7,7 @@ package
 	{
 		[Embed(source = '../res/rock.png')] private var rockImage:Class;
 		[Embed(source = '../res/coin.mp3')] private var coinSound:Class;
-		[Embed(source = '../res/background.png')] private var backgroundImage:Class;
+		[Embed(source = '../res/city-test.jpg')] private var backgroundImage:Class;
 		[Embed(source = '../res/securitypipetwo.mp3')] private var gameMusic:Class;
 		public var player:Player;
 		public var route:FlxTileblock;
@@ -36,10 +36,10 @@ package
 
 		override public function create():void 
 		{
-			background = new FlxSprite(0, 0, backgroundImage);
+			background = new FlxSprite(0, -200, backgroundImage);
 			add(background);
 			
-			backgroundLoop = new FlxSprite(1280, 0, backgroundImage);
+			backgroundLoop = new FlxSprite(1280, -200, backgroundImage);
 			add(backgroundLoop);
 			
 			FlxU.bound(0, 0, 0);
