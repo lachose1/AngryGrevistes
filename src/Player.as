@@ -14,6 +14,7 @@ package
 		private var gnd:Boolean;
 		private var jumped:Boolean;
 		private var doubleJumped:Boolean;
+		private var jumpTimer:FlxTimer;
 		public var scoreVal:uint;
 		public var scoreDisplay:FlxText;
 		private var deathTimer:FlxTimer;
@@ -51,6 +52,7 @@ package
 			height = 32;
 			
 			deathTimer = new FlxTimer();
+			jumpTimer = new FlxTimer();
 		}
 		
 		public function isGND():Boolean
@@ -73,7 +75,6 @@ package
 					dead = false;
 					loopback();
 					acceleration.x = X_ACCEL;
-					deathTimer.stop();
 					
 					FlxG.camera.setBounds( 0, 0, 320, 240, true );
 					playState.coins.clear();
@@ -99,13 +100,18 @@ package
 					velocity.y = -maxVelocity.y / 2;
 					FlxG.play(jumpSound);
 					jumped = true;
+					jumpTimer.start(0.18);
 				}
 				else if ((FlxG.keys.justPressed("X") || FlxG.keys.justPressed("C")) && jumped && !doubleJumped)
 				{
 					velocity.y = -maxVelocity.y / 2;
 					FlxG.play(jumpSound);
 					doubleJumped = true;
+					jumpTimer.start(0.18);
 				}
+				
+				if ((FlxG.keys.pressed("X") || FlxG.keys.pressed("C")) && !jumpTimer.finished)
+					velocity.y = -maxVelocity.y / 2;
 			}
 			
 			super.update();
