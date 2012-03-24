@@ -97,6 +97,7 @@ package
 			FlxG.overlap(mesrq, player, handleArielleCollision);
 
 			FlxG.collide(route, player);
+			FlxG.collide(route, mesrq);
 				
 			//Garder un collision-checking bound pas trop grand sinon ça va foirer la mémoire
 			FlxG.camera.setBounds( FlxG.camera.scroll.x, FlxG.camera.scroll.y, FlxG.camera.scroll.x + 640, 240, true );
