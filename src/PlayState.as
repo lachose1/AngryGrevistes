@@ -76,6 +76,8 @@ package
 			FlxG.overlap(coins, player, getCoin);
 			
 			FlxG.overlap(cops, player, handlePoliceCollision);
+			
+			FlxG.overlap(grenades, player, handleGrenadeCollision);
 
 			FlxG.collide(route, player);
 				
@@ -92,7 +94,13 @@ package
 		
 		public function handlePoliceCollision(police:Police, player:Player):void
 		{
-				player.kill();
+			player.kill();
+		}
+		
+		public function handleGrenadeCollision(grenade:Grenade, player:Player):void
+		{
+			player.kill();
+			grenade.kill();
 		}
 		
 		public function createWorld():void
