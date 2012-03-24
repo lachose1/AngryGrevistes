@@ -1,11 +1,13 @@
 package  
 {	
+	import mx.core.FlexSprite;
 	import org.flixel.*;
 
 	public class PlayState extends FlxState
 	{
 		[Embed(source = '../res/rock.png')] private var rockImage:Class;
 		[Embed(source = '../res/coin.mp3')] private var coinSound:Class;
+		[Embed(source = '../res/background.png')] private var backgroundImage:Class;
 		[Embed(source = '../res/securitypipetwo.mp3')] private var gameMusic:Class;
 		public var player:Player;
 		public var route:FlxTileblock;
@@ -13,6 +15,8 @@ package
 		public var cops:FlxGroup;
 		public var mesrq:FlxGroup;
 		public var grenades:FlxGroup;
+		public var background:FlxSprite;
+		public var backgroundLoop:FlxSprite;
 
 		public const MIN_X_COIN:int = 42;
 		public const MAX_Y_COIN:int = 25;
@@ -32,6 +36,12 @@ package
 
 		override public function create():void 
 		{
+			background = new FlxSprite(0, 0, backgroundImage);
+			add(background);
+			
+			backgroundLoop = new FlxSprite(1280, 0, backgroundImage);
+			add(backgroundLoop);
+			
 			FlxU.bound(0, 0, 0);
 			FlxG.bgColor = 0xffaaaaaa;
 			
@@ -54,7 +64,7 @@ package
 			player = new Player(this);
 			add(player);
 			add(player.scoreDisplay);
-			
+						
 			FlxG.camera.follow(player);
 			FlxG.camera.deadzone = new FlxRect(0, 0, Player.X_POS, 240);
 			FlxG.playMusic(gameMusic, 0.8);
@@ -62,7 +72,7 @@ package
 
 		override public function update():void 
 		{			
-			if (FlxG.camera.scroll.x > 1280-32)
+			if (FlxG.camera.scroll.x > 1280)
 			{
 				player.loopback();
 				FlxG.camera.setBounds( 0, 0, 320, 240, true );
