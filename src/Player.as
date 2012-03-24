@@ -11,21 +11,19 @@ package
 		
 		static public const X_POS:int = 32;
 		static public const X_ACCEL:int = 800;
-		private var gnd:Boolean;
 		private var jumped:Boolean;
 		private var doubleJumped:Boolean;
 		private var jumpTimer:FlxTimer;
 		public var scoreVal:uint;
 		public var scoreDisplay:FlxText;
 		private var deathTimer:FlxTimer;
-		private var dead:Boolean;
+		public var dead:Boolean;
 		private var playState:PlayState;
 		
 		public function Player(stateObj:PlayState) 
 		{
 			playState = stateObj;
 			
-			gnd = false;
 			scoreVal = 0;
 			
 			scoreDisplay = new FlxText(2, 2, 120);
@@ -53,11 +51,6 @@ package
 			
 			deathTimer = new FlxTimer();
 			jumpTimer = new FlxTimer();
-		}
-		
-		public function isGND():Boolean
-		{
-			return gnd;
 		}
 		
 		public function loopback():void
