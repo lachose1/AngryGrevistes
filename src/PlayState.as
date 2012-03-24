@@ -13,6 +13,7 @@ package
 		public var cops:FlxGroup;
 		public var mesrq:FlxGroup;
 		public var grenades:FlxGroup;
+		public var crosshairs:FlxGroup;
 
 		public const MIN_X_COIN:int = 42;
 		public const MAX_Y_COIN:int = 25;
@@ -43,6 +44,9 @@ package
 			grenades = new FlxGroup();
 			add(grenades);
 			
+			crosshairs = new FlxGroup();
+			add(crosshairs);
+			
 			route = new FlxTileblock(0, 232, 1280 + 320, 8);
 			route.loadTiles(rockImage, 0, 0);
 			add(route);
@@ -62,10 +66,7 @@ package
 			{
 				player.loopback();
 				FlxG.camera.setBounds( 0, 0, 320, 240, true );
-				coins.clear();
-				cops.clear();
-				mesrq.clear();
-				grenades.clear();
+				clearAll();
 			}
 			
 			if (FlxG.camera.scroll.x == 0)
@@ -103,6 +104,7 @@ package
 		{
 			player.kill();
 			grenade.kill();
+			crosshairs.clear();
 		}
 		
 		public function createWorld():void
@@ -187,7 +189,17 @@ package
 		public function createGrenades():void
 		{
 			var random:Number = Math.floor(Math.random() * (MAX_X_ARIELLE - MIN_X_ARIELLE) + MIN_X_ARIELLE);
-				grenades.add(new Grenade(100, 20, player));
+				grenades.add(new Grenade(120, 20, player));
+				crosshairs.add(new Crosshair(120, 15, player));
+		}
+		
+		public function clearAll():void
+		{
+			coins.clear();
+			cops.clear();
+			mesrq.clear();
+			grenades.clear();
+			crosshairs.clear();
 		}
 	}
 

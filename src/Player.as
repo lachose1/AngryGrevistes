@@ -77,10 +77,7 @@ package
 					acceleration.x = X_ACCEL;
 					
 					FlxG.camera.setBounds( 0, 0, 320, 240, true );
-					playState.coins.clear();
-					playState.cops.clear();
-					playState.mesrq.clear();
-					playState.grenades.clear();
+					playState.clearAll();
 					playState.createWorld();
 				}
 			}
