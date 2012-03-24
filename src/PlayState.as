@@ -14,7 +14,6 @@ package
 		public var mesrq:FlxGroup;
 		public var grenades:FlxGroup;
 
-		public const PLAYER_X:int = 32;
 		public const MIN_X_COIN:int = 42;
 		public const COINS_PATTERNS:int = 5;
 		public const COIN_SPAWN_WIDTH:int = 20;
@@ -46,12 +45,12 @@ package
 			route.loadTiles(rockImage, 0, 0);
 			add(route);
 			
-			player = new Player(PLAYER_X);
+			player = new Player(this);
 			add(player);
 			add(player.scoreDisplay);
 			
 			FlxG.camera.follow(player);
-			FlxG.camera.deadzone = new FlxRect(0, 0, PLAYER_X, 240);
+			FlxG.camera.deadzone = new FlxRect(0, 0, Player.X_POS, 240);
 			FlxG.playMusic(gameMusic, 0.8);
 		}
 
@@ -94,12 +93,6 @@ package
 		public function handlePoliceCollision(police:Police, player:Player):void
 		{
 				player.kill();
-				FlxG.camera.setBounds( 0, 0, 320, 240, true );
-				coins.clear();
-				cops.clear();
-				mesrq.clear();
-				grenades.clear();
-				createWorld();
 		}
 		
 		public function createWorld():void
