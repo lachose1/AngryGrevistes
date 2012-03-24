@@ -45,7 +45,7 @@ package
 			if (player.x > x - 500)
 			{
 				Aim();
-				aimTimer.start(1);
+				aimTimer.start(0.75);
 			}
 		}
 	}

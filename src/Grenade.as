@@ -7,6 +7,7 @@ package
 		[Embed(source = '../res/grenade.png')] private var grenadeImage:Class;
 		
 		private var player:Player;
+		public var crosshair:Crosshair;
 		
 		public const TILE_SIZE:uint = 8;
 		public const WIDTH:uint = 16;
@@ -18,6 +19,7 @@ package
 			loadGraphic(grenadeImage, true, false, WIDTH, HEIGHT);
 			
 			player = playerRef;
+			crosshair = new Crosshair(X, Y, playerRef);
 		}
 		
 		public function Launch():void
@@ -28,7 +30,10 @@ package
 		override public function update():void 
 		{
 			if (player.x > x - 350)
+			{
 				Launch();
+				crosshair.kill();
+			}		
 		}
 	}
 		

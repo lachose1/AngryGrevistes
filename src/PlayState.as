@@ -13,7 +13,6 @@ package
 		public var cops:FlxGroup;
 		public var mesrq:FlxGroup;
 		public var grenades:FlxGroup;
-		public var crosshairs:FlxGroup;
 
 		public const MIN_X_COIN:int = 42;
 		public const MAX_Y_COIN:int = 25;
@@ -26,6 +25,10 @@ package
 		public const COP_PATTERNS:int = 2;
 		public const MIN_X_ARIELLE:int = 55;
 		public const MAX_X_ARIELLE:int = 155;
+		public const GRENADES_SPAWN_HEIGHT:int = 15;
+		public const MAX_Y_GRENADES:int = 25;
+		public const MIN_X_GRENADES:int = 67;
+		public const MAX_X_GRENADES:int = 155;
 
 		override public function create():void 
 		{
@@ -43,10 +46,7 @@ package
 			
 			grenades = new FlxGroup();
 			add(grenades);
-			
-			crosshairs = new FlxGroup();
-			add(crosshairs);
-			
+						
 			route = new FlxTileblock(0, 232, 1280 + 320, 8);
 			route.loadTiles(rockImage, 0, 0);
 			add(route);
@@ -104,7 +104,6 @@ package
 		{
 			player.kill();
 			grenade.kill();
-			crosshairs.clear();
 		}
 		
 		public function createWorld():void
@@ -115,7 +114,8 @@ package
 				createPolice(Math.floor(Math.random() * 2), i);
 			if (Math.random() > 0.5)
 				createArielle();
-			createGrenades();
+			if (Math.random() > 0.5)
+				createGrenades();
 		}
 		
 		public function createCoins(patternType:uint, patternNumber:uint):void
@@ -188,9 +188,10 @@ package
 		
 		public function createGrenades():void
 		{
-			var random:Number = Math.floor(Math.random() * (MAX_X_ARIELLE - MIN_X_ARIELLE) + MIN_X_ARIELLE);
-				grenades.add(new Grenade(120, 25, player));
-				crosshairs.add(new Crosshair(120, 25, player));
+			var random:Number = Math.floor(Math.random() * (MAX_X_GRENADES - MIN_X_GRENADES) + MIN_X_GRENADES);
+			var randomY:Number = Math.floor(-Math.random() * GRENADES_SPAWN_HEIGHT + MAX_Y_GRENADES);
+				grenades.add(new Grenade(random, randomY, player));
+				add(grenades.members[0].crosshair);
 		}
 		
 		public function clearAll():void
@@ -199,7 +200,6 @@ package
 			cops.clear();
 			mesrq.clear();
 			grenades.clear();
-			crosshairs.clear();
 		}
 	}
 
