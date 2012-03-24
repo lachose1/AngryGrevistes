@@ -15,8 +15,10 @@ package
 		public var grenades:FlxGroup;
 
 		public const MIN_X_COIN:int = 42;
+		public const MAX_Y_COIN:int = 25;
 		public const COINS_PATTERNS:int = 5;
 		public const COIN_SPAWN_WIDTH:int = 20;
+		public const COIN_SPAWN_HEIGHT:int = 15;
 		public const MIN_X_POLICE:int = 42;
 		public const MAX_Y_POLICE:int = 25;
 		public const COP_SPAWN_WIDTH:int = 50;
@@ -116,30 +118,31 @@ package
 		
 		public function createCoins(patternType:uint, patternNumber:uint):void
 		{	
-			var random:Number = Math.floor(Math.random() * COIN_SPAWN_WIDTH + MIN_X_COIN + patternNumber * COIN_SPAWN_WIDTH);
+			var randomX:Number = Math.floor(Math.random() * COIN_SPAWN_WIDTH + MIN_X_COIN + patternNumber * COIN_SPAWN_WIDTH);
+			var randomY:Number = Math.floor(-Math.random() * COIN_SPAWN_HEIGHT + MAX_Y_COIN);
 			
 			switch(patternType) 
 			{
 				case 0: //Ligne de 8 sous
-					if (((random - MIN_X_COIN) % COIN_SPAWN_WIDTH) > (COIN_SPAWN_WIDTH - 8))
-						random -= 8;
+					if (((randomX - MIN_X_COIN) % COIN_SPAWN_WIDTH) > (COIN_SPAWN_WIDTH - 8))
+						randomX -= 8;
 					for (var i:uint = 0; i < 8; ++i)
 					{
-						coins.add(new Coin(random + i, 20));
+						coins.add(new Coin(randomX + i, randomY));
 					}
 					break;
 				case 1: //X de 9 sous
-					if (((random - MIN_X_COIN) % COIN_SPAWN_WIDTH) > (COIN_SPAWN_WIDTH - 5))
-						random -= 5;					
-					coins.add(new Coin(random, 18));
-					coins.add(new Coin(random, 22));
-					coins.add(new Coin(random + 1, 19));
-					coins.add(new Coin(random + 1, 21));
-					coins.add(new Coin(random + 2, 20));
-					coins.add(new Coin(random + 3, 19));
-					coins.add(new Coin(random + 3, 21));
-					coins.add(new Coin(random + 4, 18));
-					coins.add(new Coin(random + 4, 22));
+					if (((randomX - MIN_X_COIN) % COIN_SPAWN_WIDTH) > (COIN_SPAWN_WIDTH - 5))
+						randomX -= 5;					
+					coins.add(new Coin(randomX, randomY - 2));
+					coins.add(new Coin(randomX, randomY + 2));
+					coins.add(new Coin(randomX + 1, randomY - 1));
+					coins.add(new Coin(randomX + 1, randomY + 1));
+					coins.add(new Coin(randomX + 2, randomY));
+					coins.add(new Coin(randomX + 3, randomY - 1));
+					coins.add(new Coin(randomX + 3, randomY + 1));
+					coins.add(new Coin(randomX + 4, randomY - 2));
+					coins.add(new Coin(randomX + 4, randomY + 2));
 					break;
 				default:
 					break;
