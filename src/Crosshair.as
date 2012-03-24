@@ -8,6 +8,8 @@ package
 		
 		private var player:Player;
 		private var sinX:Number = 0;
+		private var grenadeY:int;
+		private var aimTimer:FlxTimer;
 		
 		public const TILE_SIZE:uint = 8;
 		public const WIDTH:uint = 15;
@@ -19,19 +21,32 @@ package
 			loadGraphic(crosshairImage, false , false, WIDTH, HEIGHT);
 			
 			player = playerRef;
+			grenadeY = Y * TILE_SIZE;
+			aimTimer = new FlxTimer();
 		}
 		
 		public function Aim():void
 		{
-			y = Math.sin(sinX) * 100 + 105;
-			sinX += 0.05;
-			x = player.x + 272
+			var answer:Number = Math.sin(2*sinX) * 100 + 120;
+			if (answer < grenadeY || !aimTimer.finished)
+			{
+				sinX += 0.05;
+				y = answer;
+			}
+			else
+			{
+				y = grenadeY;
+			}
+			x = player.x + 275;
 		}
 		
 		override public function update():void 
 		{
 			if (player.x > x - 500)
+			{
 				Aim();
+				aimTimer.start(1);
+			}
 		}
 	}
 		

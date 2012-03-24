@@ -189,8 +189,8 @@ package
 		public function createGrenades():void
 		{
 			var random:Number = Math.floor(Math.random() * (MAX_X_ARIELLE - MIN_X_ARIELLE) + MIN_X_ARIELLE);
-				grenades.add(new Grenade(120, 20, player));
-				crosshairs.add(new Crosshair(120, 15, player));
+				grenades.add(new Grenade(120, 25, player));
+				crosshairs.add(new Crosshair(120, 25, player));
 		}
 		
 		public function clearAll():void
