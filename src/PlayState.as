@@ -72,7 +72,7 @@ package
 
 		override public function update():void 
 		{			
-			if (FlxG.camera.scroll.x > 1280)
+			if (FlxG.camera.scroll.x > 1280 + 20)
 			{
 				player.loopback();
 				FlxG.camera.setBounds( 0, 0, 320, 240, true );

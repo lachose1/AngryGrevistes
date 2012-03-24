@@ -33,7 +33,8 @@ package
 			{
 				Launch();
 				crosshair.kill();
-			}		
+			}
+			angle -= 10
 		}
 	}
 		
