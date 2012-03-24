@@ -91,6 +91,8 @@ package
 			FlxG.overlap(cops, player, handlePoliceCollision);
 			
 			FlxG.overlap(grenades, player, handleGrenadeCollision);
+			
+			FlxG.overlap(mesrq, player, handleArielleCollision);
 
 			FlxG.collide(route, player);
 				
@@ -106,6 +108,11 @@ package
 		}
 		
 		public function handlePoliceCollision(police:Police, player:Player):void
+		{
+			player.kill();
+		}
+		
+		public function handleArielleCollision(arielle:Arielle, player:Player):void
 		{
 			player.kill();
 		}
