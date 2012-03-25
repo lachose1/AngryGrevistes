@@ -33,7 +33,7 @@ package
 		public const MAX_Y_ARIELLE:int = 25;
 		public const GRENADES_SPAWN_HEIGHT:int = 15;
 		public const MAX_Y_GRENADES:int = 25;
-		public const MIN_X_GRENADES:int = 67;
+		public const MIN_X_GRENADES:int = 75;
 		public const MAX_X_GRENADES:int = 155;
 
 		override public function create():void 
