@@ -215,6 +215,7 @@ package
 			
 			grenades.add(new Grenade(randomX, randomY, player));
 			add(grenades.members[0].crosshair);
+			add(grenades.members[0].smokeEmitter);
 		}
 		
 		public function clearAll():void
@@ -222,8 +223,11 @@ package
 			coins.clear();
 			cops.clear();
 			mesrq.clear();
-			if(grenades.countLiving() > 0)
+			if (grenades.countLiving() > 0)
+			{
 				grenades.members[0].crosshair.kill();
+				grenades.members[0].smokeEmitter.kill()
+			}
 			grenades.clear();
 		}
 	}
