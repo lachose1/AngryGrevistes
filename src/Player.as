@@ -33,9 +33,9 @@ package
 			
 			super(X_POS, FlxG.height - 40);
 			loadGraphic(ninjaImage, true, false, 25, 32);
-			maxVelocity.x = 175;
+			maxVelocity.x = 200;
 			maxVelocity.y = 400;
-			acceleration.y = 300;
+			acceleration.y = 350;
 			
 			acceleration.x = X_ACCEL;
 			

@@ -87,14 +87,14 @@ package
 			}
 			
 			super.update();
-
-			FlxG.overlap(coins, player, getCoin);
 			
-			FlxG.overlap(cops, player, handlePoliceCollision);
-			
-			FlxG.overlap(grenades, player, handleGrenadeCollision);
-			
-			FlxG.overlap(mesrq, player, handleArielleCollision);
+			if (!player.dead)
+			{
+				FlxG.overlap(coins, player, getCoin);
+				FlxG.overlap(cops, player, handlePoliceCollision);
+				FlxG.overlap(grenades, player, handleGrenadeCollision);
+				FlxG.overlap(mesrq, player, handleArielleCollision);
+			}
 
 			FlxG.collide(route, player);
 			FlxG.collide(route, mesrq);
