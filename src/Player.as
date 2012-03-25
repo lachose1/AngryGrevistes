@@ -90,14 +90,14 @@ package
 					velocity.y = -maxVelocity.y / 2;
 					FlxG.play(jumpSound);
 					jumped = true;
-					jumpTimer.start(0.18);
+					jumpTimer.start(0.2);
 				}
 				else if ((FlxG.keys.justPressed("X") || FlxG.keys.justPressed("C")) && jumped && !doubleJumped)
 				{
 					velocity.y = -maxVelocity.y / 2;
 					FlxG.play(jumpSound);
 					doubleJumped = true;
-					jumpTimer.start(0.18);
+					jumpTimer.start(0.2);
 				}
 				
 				if ((FlxG.keys.pressed("X") || FlxG.keys.pressed("C")) && !jumpTimer.finished)
