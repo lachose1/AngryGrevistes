@@ -35,7 +35,7 @@ package
 			loadGraphic(ninjaImage, true, false, 25, 32);
 			maxVelocity.x = 200;
 			maxVelocity.y = 400;
-			acceleration.y = 350;
+			acceleration.y = 400;
 			
 			acceleration.x = X_ACCEL;
 			
