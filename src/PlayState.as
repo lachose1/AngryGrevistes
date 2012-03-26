@@ -148,6 +148,7 @@ package
 		
 		public function handleArielleCollision(arielle:Arielle, player:Player):void
 		{
+			arielle.moiSoundPlayer.stop();
 			player.kill();
 		}
 		

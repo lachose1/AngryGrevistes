@@ -13,7 +13,7 @@ package
 		[Embed(source = '../res/arielle.mp3')] private var moiSound:Class;
 		private var player:Player;
 		private var soundOn:Boolean;
-		private var moiSoundPlayer:FlxSound;
+		public var moiSoundPlayer:FlxSound;
 		
 		public function Arielle(X:uint, Y:uint, playerRef:Player) 
 		{
