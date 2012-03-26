@@ -17,6 +17,7 @@ package
 		public var grenades:FlxGroup;
 		public var background:FlxSprite;
 		public var backgroundLoop:FlxSprite;
+		public var bossMode:Boolean;
 
 		public const MIN_X_COIN:int = 42;
 		public const MAX_Y_COIN:int = 25;
@@ -70,37 +71,48 @@ package
 			FlxG.camera.follow(player);
 			FlxG.camera.deadzone = new FlxRect(0, 0, Player.X_POS, 240);
 			FlxG.playMusic(gameMusic, 0.8);
+			
+			bossMode = false;
 		}
 
 		override public function update():void 
-		{			
-			if (FlxG.camera.scroll.x > 1280 + 20)
+		{	
+			if (!bossMode)
 			{
-				player.loopback();
-				FlxG.camera.setBounds( 0, 0, 320, 240, true );
-				clearAll();
-			}
-			
-			if (FlxG.camera.scroll.x == 0)
-			{
-				createWorld();
-			}
-			
-			super.update();
-			
-			if (!player.dead)
-			{
-				FlxG.overlap(coins, player, getCoin);
-				FlxG.overlap(cops, player, handlePoliceCollision);
-				FlxG.overlap(grenades, player, handleGrenadeCollision);
-				FlxG.overlap(mesrq, player, handleArielleCollision);
-			}
-
-			FlxG.collide(route, player);
-			FlxG.collide(route, mesrq);
+				if (FlxG.camera.scroll.x > 1280 + 20)
+				{
+					player.loopback();
+					FlxG.camera.setBounds( 0, 0, 320, 240, true );
+					clearAll();
+				}
 				
-			//Garder un collision-checking bound pas trop grand sinon ça va foirer la mémoire
-			FlxG.camera.setBounds( FlxG.camera.scroll.x, FlxG.camera.scroll.y, FlxG.camera.scroll.x + 640, 240, true );
+				if (FlxG.camera.scroll.x == 0)
+				{
+					createWorld();
+				}
+				
+				super.update();
+				
+				if (!player.dead)
+				{
+					FlxG.overlap(coins, player, getCoin);
+					FlxG.overlap(cops, player, handlePoliceCollision);
+					FlxG.overlap(grenades, player, handleGrenadeCollision);
+					FlxG.overlap(mesrq, player, handleArielleCollision);
+				}
+
+				FlxG.collide(route, player);
+				FlxG.collide(route, mesrq);
+					
+				//Garder un collision-checking bound pas trop grand sinon ça va foirer la mémoire
+				FlxG.camera.setBounds( FlxG.camera.scroll.x, FlxG.camera.scroll.y, FlxG.camera.scroll.x + 640, 240, true );
+				if (player.scoreVal == 1620)
+					bossMode = true;
+			}
+			else
+			{
+				//Definir le boss mode icite calice
+			}
 		}
 
 		public function getCoin(coin:Coin, player:Player):void
