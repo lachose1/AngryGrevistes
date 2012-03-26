@@ -9,6 +9,7 @@ package
 		[Embed(source = '../res/coin.mp3')] private var coinSound:Class;
 		[Embed(source = '../res/city-test.jpg')] private var backgroundImage:Class;
 		[Embed(source = '../res/securitypipetwo.mp3')] private var gameMusic:Class;
+		[Embed(source = '../res/laugh.mp3')] private var laughSound:Class;
 		public var player:Player;
 		public var route:FlxTileblock;
 		public var coins:FlxGroup;
@@ -34,7 +35,7 @@ package
 		public const MAX_Y_ARIELLE:int = 25;
 		public const GRENADES_SPAWN_HEIGHT:int = 15;
 		public const MAX_Y_GRENADES:int = 25;
-		public const MIN_X_GRENADES:int = 67;
+		public const MIN_X_GRENADES:int = 75;
 		public const MAX_X_GRENADES:int = 155;
 
 		override public function create():void 
@@ -263,6 +264,7 @@ package
 		
 		public function startBossMode():void
 		{
+			FlxG.play(laughSound);
 			FlxG.camera.flash(0xffffffff, 3);
 			clearAll();
 			bossMode = true;
