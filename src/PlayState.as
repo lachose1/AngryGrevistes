@@ -107,11 +107,28 @@ package
 				//Garder un collision-checking bound pas trop grand sinon ça va foirer la mémoire
 				FlxG.camera.setBounds( FlxG.camera.scroll.x, FlxG.camera.scroll.y, FlxG.camera.scroll.x + 640, 240, true );
 				if (player.scoreVal == 1620)
-					bossMode = true;
+					startBossMode();
 			}
 			else
 			{
 				//Definir le boss mode icite calice
+				if (FlxG.camera.scroll.x > 1280 + 20)
+				{
+					player.loopback();
+					FlxG.camera.setBounds( 0, 0, 320, 240, true );
+				}
+				
+				super.update();
+				
+				if (!player.dead)
+				{
+					//Pendant qui est pas mort
+				}
+
+				FlxG.collide(route, player);
+					
+				//Garder un collision-checking bound pas trop grand sinon ça va foirer la mémoire
+				FlxG.camera.setBounds( FlxG.camera.scroll.x, FlxG.camera.scroll.y, FlxG.camera.scroll.x + 640, 240, true );				
 			}
 		}
 
@@ -242,6 +259,13 @@ package
 				grenades.members[0].smokeEmitter.kill();
 			}
 			grenades.clear();
+		}
+		
+		public function startBossMode():void
+		{
+			FlxG.camera.flash(0xffffffff, 3);
+			clearAll();
+			bossMode = true;
 		}
 	}
 
