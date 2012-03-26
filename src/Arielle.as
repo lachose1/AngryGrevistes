@@ -12,6 +12,8 @@ package
 		[Embed(source = '../res/arielle.png')] private var metroidImage:Class;
 		[Embed(source = '../res/arielle.mp3')] private var moiSound:Class;
 		private var player:Player;
+		private var soundOn:Boolean;
+		private var moiSoundPlayer:FlxSound;
 		
 		public function Arielle(X:uint, Y:uint, playerRef:Player) 
 		{
@@ -24,12 +26,22 @@ package
 			player = playerRef;
 
 			maxAngular = 300;
+			soundOn = false;
 		}
 		
 		override public function update():void 
 		{
 			if(!player.dead)
 				seek(player);
+			if (player.x > x - 350 && !soundOn)
+			{
+				moiSoundPlayer = FlxG.play(moiSound, 1.0, true);
+				soundOn = true;
+			}
+			if (player.x > x)
+			{
+				moiSoundPlayer.stop();
+			}
 		}
 		
 		public function seek(target:Player):void

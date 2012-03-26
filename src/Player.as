@@ -5,7 +5,7 @@ package
 	
 	public class Player extends FlxSprite
 	{
-		[Embed(source = '../res/ninja.png')] private var ninjaImage:Class;
+		[Embed(source = '../res/gabriel.png')] private var ninjaImage:Class;
 		[Embed(source = '../res/jump.mp3')] private var jumpSound:Class;
 		[Embed(source = '../res/death.mp3')] private var deathSound:Class;
 		
