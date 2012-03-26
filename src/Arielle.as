@@ -27,6 +27,7 @@ package
 
 			maxAngular = 300;
 			soundOn = false;
+			moiSoundPlayer = FlxG.play(moiSound, 0);
 		}
 		
 		override public function update():void 

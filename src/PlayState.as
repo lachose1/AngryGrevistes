@@ -20,6 +20,7 @@ package
 		public var background:FlxSprite;
 		public var backgroundLoop:FlxSprite;
 		public var bossMode:Boolean;
+		public var boss:Robeauchamp;
 
 		public const MIN_X_COIN:int = 42;
 		public const MAX_Y_COIN:int = 25;
@@ -117,6 +118,7 @@ package
 				if (FlxG.camera.scroll.x > 1280 + 20)
 				{
 					player.loopback();
+					boss.loopback();
 					FlxG.camera.setBounds( 0, 0, 320, 240, true );
 				}
 				
@@ -270,6 +272,8 @@ package
 		
 		public function startBossMode():void
 		{
+			boss = new Robeauchamp(player);
+			add(boss);
 			FlxG.play(laughSound);
 			FlxG.camera.flash(0xffffffff, 3);
 			clearAll();
