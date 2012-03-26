@@ -4,6 +4,8 @@ package
  
 	public class MenuState extends FlxState
 	{
+		[Embed(source = '../res/speech-heart.mp3')] private var menuMusic:Class;
+		
 		override public function create():void
 		{
 			var title:FlxText;
@@ -15,6 +17,7 @@ package
 			instructions = new FlxText(0, FlxG.height - 32, FlxG.width, "Appuyez sur X ou C pour jouer");
 			instructions.setFormat (null, 8, 0xFFFFFFFF, "center");
 			add(instructions);
+			FlxG.playMusic(menuMusic, 1);
 		}
 
 		override public function update():void
