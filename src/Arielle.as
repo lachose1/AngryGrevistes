@@ -81,6 +81,12 @@ package
 			velocity.x *= FRICTION;
 			velocity.y *= FRICTION;
 		}
+		
+		override public function kill():void 
+		{
+			moiSoundPlayer.stop();
+			super.kill();
+		}
 	}
 
 }

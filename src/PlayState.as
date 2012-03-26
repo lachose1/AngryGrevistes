@@ -155,6 +155,7 @@ package
 		public function handleGrenadeCollision(grenade:Grenade, player:Player):void
 		{
 			FlxG.play(grenadeSound);
+			FlxG.camera.flash(0xffffffff, 1);
 			player.kill();
 			grenade.smokeEmitter.kill();
 			grenade.kill();
@@ -256,6 +257,8 @@ package
 		{
 			coins.clear();
 			cops.clear();
+			if (mesrq.countLiving() > 0)
+				mesrq.members[0].kill();
 			mesrq.clear();
 			if (grenades.countLiving() > 0)
 			{
