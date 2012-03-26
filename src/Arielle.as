@@ -38,7 +38,7 @@ package
 				moiSoundPlayer = FlxG.play(moiSound, 1.0, true);
 				soundOn = true;
 			}
-			if (player.x > x)
+			if (player.x > x + 32)
 			{
 				moiSoundPlayer.stop();
 			}

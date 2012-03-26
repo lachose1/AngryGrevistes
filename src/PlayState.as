@@ -5,7 +5,7 @@ package
 
 	public class PlayState extends FlxState
 	{
-		[Embed(source = '../res/rock.png')] private var rockImage:Class;
+		[Embed(source = '../res/rocaille.png')] private var rockImage:Class;
 		[Embed(source = '../res/coin.mp3')] private var coinSound:Class;
 		[Embed(source = '../res/grenade.mp3')] private var grenadeSound:Class;
 		[Embed(source = '../res/city-test.jpg')] private var backgroundImage:Class;
