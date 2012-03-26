@@ -123,6 +123,7 @@ package
 		public function handleGrenadeCollision(grenade:Grenade, player:Player):void
 		{
 			player.kill();
+			grenade.smokeEmitter.kill();
 			grenade.kill();
 		}
 		
@@ -226,7 +227,7 @@ package
 			if (grenades.countLiving() > 0)
 			{
 				grenades.members[0].crosshair.kill();
-				grenades.members[0].smokeEmitter.kill()
+				grenades.members[0].smokeEmitter.kill();
 			}
 			grenades.clear();
 		}
