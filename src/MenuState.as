@@ -18,6 +18,7 @@ package
 			instructions.setFormat (null, 8, 0xFFFFFFFF, "center");
 			add(instructions);
 			FlxG.playMusic(menuMusic, 1);
+			FlxG.bgColor = 0xffff0000;
 		}
 
 		override public function update():void
