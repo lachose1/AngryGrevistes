@@ -7,6 +7,7 @@ package
 	{
 		[Embed(source = '../res/rock.png')] private var rockImage:Class;
 		[Embed(source = '../res/coin.mp3')] private var coinSound:Class;
+		[Embed(source = '../res/grenade.mp3')] private var grenadeSound:Class;
 		[Embed(source = '../res/city-test.jpg')] private var backgroundImage:Class;
 		[Embed(source = '../res/securitypipetwo.mp3')] private var gameMusic:Class;
 		[Embed(source = '../res/laugh.mp3')] private var laughSound:Class;
@@ -152,6 +153,7 @@ package
 		
 		public function handleGrenadeCollision(grenade:Grenade, player:Player):void
 		{
+			FlxG.play(grenadeSound);
 			player.kill();
 			grenade.smokeEmitter.kill();
 			grenade.kill();
