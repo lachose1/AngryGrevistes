@@ -9,7 +9,7 @@ package
 		public const THRUST:int = 400;
 		public const MAX_THRUST:int = 400;
 		
-		[Embed(source = '../res/metroid.png')] private var metroidImage:Class;
+		[Embed(source = '../res/arielle.png')] private var metroidImage:Class;
 		[Embed(source = '../res/arielle.mp3')] private var moiSound:Class;
 		private var player:Player;
 		
@@ -30,7 +30,6 @@ package
 		{
 			if(!player.dead)
 				seek(player);
-			FlxG.play(moiSound);
 		}
 		
 		public function seek(target:Player):void
