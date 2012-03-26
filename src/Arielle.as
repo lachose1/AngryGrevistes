@@ -10,6 +10,7 @@ package
 		public const MAX_THRUST:int = 400;
 		
 		[Embed(source = '../res/metroid.png')] private var metroidImage:Class;
+		[Embed(source = '../res/arielle.mp3')] private var moiSound:Class;
 		private var player:Player;
 		
 		public function Arielle(X:uint, Y:uint, playerRef:Player) 
@@ -29,6 +30,7 @@ package
 		{
 			if(!player.dead)
 				seek(player);
+			FlxG.play(moiSound);
 		}
 		
 		public function seek(target:Player):void
