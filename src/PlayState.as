@@ -8,7 +8,7 @@ package
 		[Embed(source = '../res/rocaille.png')] private var rockImage:Class;
 		[Embed(source = '../res/coin.mp3')] private var coinSound:Class;
 		[Embed(source = '../res/grenade.mp3')] private var grenadeSound:Class;
-		[Embed(source = '../res/city-test.jpg')] private var backgroundImage:Class;
+		[Embed(source = '../res/backgroundnature.png')] private var backgroundImage:Class;
 		[Embed(source = '../res/securitypipetwo.mp3')] private var gameMusic:Class;
 		[Embed(source = '../res/laugh.mp3')] private var laughSound:Class;
 		public var player:Player;
@@ -42,14 +42,14 @@ package
 
 		override public function create():void 
 		{
-			background = new FlxSprite(0, -200, backgroundImage);
+			background = new FlxSprite(0, 10, backgroundImage);
 			add(background);
 			
-			backgroundLoop = new FlxSprite(1280, -200, backgroundImage);
+			backgroundLoop = new FlxSprite(1280, 10, backgroundImage);
 			add(backgroundLoop);
 			
 			FlxU.bound(0, 0, 0);
-			FlxG.bgColor = 0xffaaaaaa;
+			FlxG.bgColor = 0xffc1e8ef;
 			
 			coins = new FlxGroup();
 			add(coins);
