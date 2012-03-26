@@ -57,7 +57,7 @@ package
 		
 		public function startSmoke():void
 		{
-			smokeEmitter.start(false, 2, 0.05, 0);
+			smokeEmitter.start(false, 1.5, 0.05, 0);
 			smokeOn = true;
 		}
 	}
