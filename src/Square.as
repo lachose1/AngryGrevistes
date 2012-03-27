@@ -23,6 +23,8 @@ package
 			changedColor = false;
 			
 			velocity.x = -100;
+			
+			velocity.y = Math.random() * 125 + 50;
 		}
 		
 		override public function update():void 
@@ -35,16 +37,17 @@ package
 			if (!changedColor)
 			{
 				green = !green;
-			
 				if (green)
 				{
 					loadGraphic(greenSquareImage, true, false, 17, 17);
 					velocity.x = -100;
+					velocity.y = -velocity.y;
 				}
 				else
 				{
 					loadGraphic(redSquareImage, true, false, 17, 17);
 					velocity.x = 400;
+					velocity.y = -velocity.y + 50;
 				}
 				
 				changedColor = true;
