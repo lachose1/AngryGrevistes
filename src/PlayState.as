@@ -10,7 +10,7 @@ package
 		[Embed(source = '../res/grenade.mp3')] private var grenadeSound:Class;
 		[Embed(source = '../res/backgroundnature.png')] private var backgroundImage:Class;
 		[Embed(source = '../res/securitypipetwo.mp3')] private var gameMusic:Class;
-		[Embed(source = '../res/laugh.mp3')] private var laughSound:Class;
+		[Embed(source = '../res/laugh.mp3')] public var laughSound:Class;
 		public var player:Player;
 		public var route:FlxTileblock;
 		public var coins:FlxGroup;
@@ -129,7 +129,8 @@ package
 				
 				if (!player.dead)
 				{
-					//Pendant qui est pas mort
+					FlxG.overlap(boss.cops, player, handlePoliceCollision);
+					FlxG.overlap(boss.squares, player, handleSquareCollision);
 				}
 
 				FlxG.collide(route, player);
@@ -164,6 +165,11 @@ package
 			player.kill();
 			grenade.smokeEmitter.kill();
 			grenade.kill();
+		}
+		
+		public function handleSquareCollision(square:Square, player:Player):void
+		{
+			square.changeColor();
 		}
 		
 		public function createWorld():void
@@ -260,17 +266,25 @@ package
 		
 		public function clearAll():void
 		{
-			coins.clear();
-			cops.clear();
-			if (mesrq.countLiving() > 0)
-				mesrq.members[0].kill();
-			mesrq.clear();
-			if (grenades.countLiving() > 0)
+			if (!bossMode)
 			{
-				grenades.members[0].crosshair.kill();
-				grenades.members[0].smokeEmitter.kill();
+				coins.clear();
+				cops.clear();
+				if (mesrq.countLiving() > 0)
+					mesrq.members[0].kill();
+				mesrq.clear();
+				if (grenades.countLiving() > 0)
+				{
+					grenades.members[0].crosshair.kill();
+					grenades.members[0].smokeEmitter.kill();
+				}
+				grenades.clear();
 			}
-			grenades.clear();
+			else
+			{
+				boss.cops.clear();
+				boss.squares.clear();
+			}
 		}
 		
 		public function startBossMode():void

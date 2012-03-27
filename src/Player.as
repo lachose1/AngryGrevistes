@@ -37,7 +37,7 @@ package
 			maxVelocity.y = 400;
 			acceleration.y = 400;
 			
-			acceleration.x = X_ACCEL;
+			velocity.x = maxVelocity.x;
 			
 			addAnimation("normal", [0, 1, 2], 10);
 			addAnimation("jump", [3]);
@@ -67,11 +67,14 @@ package
 				{
 					dead = false;
 					loopback();
-					acceleration.x = X_ACCEL;
+					velocity.x = maxVelocity.x;
 					
 					FlxG.camera.setBounds( 0, 0, 320, 240, true );
 					playState.clearAll();
-					playState.createWorld();
+					if(!playState.bossMode)
+						playState.createWorld();
+					else
+						playState.boss.loopback();
 				}
 			}
 			else
@@ -120,6 +123,10 @@ package
 				acceleration.x = 0;
 				velocity.x = velocity.y = 0;
 				deathTimer.start(1);
+				if (playState.bossMode)
+				{
+					FlxG.play(playState.laughSound);
+				}
 			}
 		}
 	}
