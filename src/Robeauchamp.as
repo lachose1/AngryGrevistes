@@ -6,6 +6,7 @@ package
 	{
 		[Embed(source = '../res/robeauchamppixel.png')] private var robeauchampImage:Class;
 		[Embed(source = '../res/createpolice.mp3')] private var createPoliceSound:Class;
+		[Embed(source = '../res/shoot.mp3')] private var shootSound:Class;
 		
 		[Embed(source = '../res/accessibiliteauxetudes.mp3')] private var replique1Sound:Class;
 		[Embed(source = '../res/positionequilibree.mp3')] private var replique2Sound:Class;
@@ -134,6 +135,7 @@ package
 			if (posX >= MIN_X_SQUARE && posX <= MAX_X_SQUARE)
 			{
 				squares.add(new Square(posX, 9));
+				FlxG.play(shootSound);
 				play("shooting");
 				animTimer.start(ANIM_DELAY);
 			}
