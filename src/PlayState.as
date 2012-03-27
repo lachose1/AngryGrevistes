@@ -82,7 +82,7 @@ package
 		{	
 			if (!bossMode)
 			{
-				if (FlxG.camera.scroll.x > 1280 + 20)
+				if (FlxG.camera.scroll.x > 1280)
 				{
 					player.loopback();
 					FlxG.camera.setBounds( 0, 0, 320, 240, true );
