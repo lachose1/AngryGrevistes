@@ -5,10 +5,15 @@ package
 	public class Robeauchamp extends FlxSprite
 	{
 		[Embed(source = '../res/robeauchamppixel.png')] private var robeauchampImage:Class;
-		
 		private var player:Player;
+		private var attackTimer:FlxTimer;
+		public var cops:FlxGroup;
 				
 		static public const X_POS:int = 140;
+		public const MIN_X_POLICE:int = 42;
+		public const MAX_X_POLICE:int = 142;
+		public const MAX_Y_POLICE:int = 25;
+		public const ATTACK_DELAY:int = 3;
 		
 		public function Robeauchamp(playerRef:Player) 
 		{
@@ -24,11 +29,66 @@ package
 			
 			play("normal");
 			x = player.x + X_POS;
+			
+			cops = new FlxGroup();
+			
+			attackTimer = new FlxTimer();
+			attackTimer.start(ATTACK_DELAY);
 		}
 		
 		public function loopback():void
 		{
 			x = X_POS + 9;
+			cops.clear();
+		}
+		
+		override public function update():void 
+		{
+			if (attackTimer.finished)
+			{
+				attack();
+				attackTimer.start(ATTACK_DELAY);
+			}
+			
+			super.update();
+		}
+		
+		private function attack():void
+		{
+			var attackType:int = Math.floor(Math.random() * 2);
+			
+			switch(attackType)
+			{
+				case 0: //Creer polices
+					createPolice();
+					break;
+				case 1:
+					break;
+				default:
+					break;
+			}
+		}
+		
+		private function createPolice():void
+		{
+			var patternType:int = Math.floor(Math.random() * 2);
+			var posX:int = Math.floor((x + width / 2) / 8);
+			
+			if (posX >= MIN_X_POLICE && posX <= MAX_X_POLICE)
+			{
+				switch(patternType)
+				{
+					case 0: //1 verticalement
+						cops.add(new Police(posX, MAX_Y_POLICE));
+						break;
+					case 1: //2 verticalement
+						cops.add(new Police(posX, MAX_Y_POLICE));
+						cops.add(new Police(posX, MAX_Y_POLICE - 4));
+						break;
+					default:
+						break;
+				}
+			}
 		}
 	}
 		

@@ -277,6 +277,7 @@ package
 		{
 			boss = new Robeauchamp(player);
 			add(boss);
+			add(boss.cops);
 			FlxG.play(laughSound);
 			FlxG.camera.flash(0xffffffff, 3);
 			clearAll();
