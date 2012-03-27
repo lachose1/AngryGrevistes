@@ -5,6 +5,7 @@ package
 	public class Robeauchamp extends FlxSprite
 	{
 		[Embed(source = '../res/robeauchamppixel.png')] private var robeauchampImage:Class;
+		[Embed(source = '../res/createpolice.mp3')] private var createPoliceSound:Class;
 		private var player:Player;
 		private var attackTimer:FlxTimer;
 		public var cops:FlxGroup;
@@ -82,6 +83,7 @@ package
 			
 			if (posX >= MIN_X_POLICE && posX <= MAX_X_POLICE)
 			{
+				FlxG.play(createPoliceSound);
 				switch(patternType)
 				{
 					case 0: //1 verticalement
