@@ -34,7 +34,6 @@ package
 				smokeEmitter.add(smokeParticles);
 			}
 			smokeOn = false;
-			//smokeEmitter.start();
 		}
 		
 		public function Launch():void

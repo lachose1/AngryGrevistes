@@ -8,6 +8,7 @@ package
 		[Embed(source = '../res/createpolice.mp3')] private var createPoliceSound:Class;
 		private var player:Player;
 		private var attackTimer:FlxTimer;
+		private var animTimer:FlxTimer;
 		public var cops:FlxGroup;
 		public var squares:FlxGroup;
 		
@@ -18,6 +19,7 @@ package
 		public const MIN_X_SQUARE:int = 42;
 		public const MAX_X_SQUARE:int = 142;
 		public const ATTACK_DELAY:int = 2;
+		public const ANIM_DELAY:int = 1;
 		
 		public function Robeauchamp(playerRef:Player) 
 		{
@@ -39,6 +41,8 @@ package
 			
 			attackTimer = new FlxTimer();
 			attackTimer.start(ATTACK_DELAY);
+			
+			animTimer = new FlxTimer();
 		}
 		
 		public function loopback():void
@@ -55,6 +59,9 @@ package
 				attack();
 				attackTimer.start(ATTACK_DELAY);
 			}
+			
+			if (animTimer.finished)
+				play("normal");
 			
 			super.update();
 		}
@@ -100,8 +107,15 @@ package
 		}
 		
 		private function launchSquares():void
-		{
+		{	
+			var posX:int = Math.floor((x + width / 2) / 8);
 			
+			if (posX >= MIN_X_SQUARE && posX <= MAX_X_SQUARE)
+			{
+				squares.add(new Square(posX, 9));
+				play("shooting");
+				animTimer.start(ANIM_DELAY);
+			}
 		}
 	}
 		

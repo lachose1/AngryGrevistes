@@ -10,23 +10,48 @@ package
 		public const TILE_SIZE:uint = 8;
 		
 		public var green:Boolean;
+		private var changedColor:Boolean;
 		
-		public function Coin(X:uint, Y:uint)
+		public function Square(X:uint, Y:uint)
 		{
 			super(X * TILE_SIZE, Y * TILE_SIZE);
-			loadGraphic(greenSquareImageImage, true, false, 16, 16);
-			addAnimation("spinning", [0, 1, 2, 3, 4, 5, 6, 7], 10);
-			
+			loadGraphic(greenSquareImage, true, false, 17, 17);
+			addAnimation("spinning", [0, 1, 2, 3, 4, 5, 6, 7], 20);
 			play("spinning");
 			
 			green = true;
+			changedColor = false;
 			
-			velocity.x = -150;
+			velocity.x = -100;
+			
+			velocity.y = Math.random() * 125 + 50;
 		}
 		
 		override public function update():void 
 		{	
 			super.update();
+		}
+		
+		public function changeColor():void
+		{
+			if (!changedColor)
+			{
+				green = !green;
+				if (green)
+				{
+					loadGraphic(greenSquareImage, true, false, 17, 17);
+					velocity.x = -100;
+					velocity.y = -velocity.y;
+				}
+				else
+				{
+					loadGraphic(redSquareImage, true, false, 17, 17);
+					velocity.x = 400;
+					velocity.y = -velocity.y + 50;
+				}
+				
+				changedColor = true;
+			}
 		}
 	}
 
