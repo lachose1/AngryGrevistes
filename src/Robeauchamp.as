@@ -6,11 +6,21 @@ package
 	{
 		[Embed(source = '../res/robeauchamppixel.png')] private var robeauchampImage:Class;
 		[Embed(source = '../res/createpolice.mp3')] private var createPoliceSound:Class;
+		
+		[Embed(source = '../res/accessibiliteauxetudes.mp3')] private var replique1Sound:Class;
+		[Embed(source = '../res/positionequilibree.mp3')] private var replique2Sound:Class;
+		[Embed(source = '../res/gardiennedemocratie.mp3')] private var replique3Sound:Class;
+		[Embed(source = '../res/lunettescassees.mp3')] private var replique4Sound:Class;
+		[Embed(source = '../res/toutehonnetete.mp3')] private var replique5Sound:Class;
+		[Embed(source = '../res/decisionprise.mp3')] private var replique6Sound:Class;
+		
 		private var player:Player;
 		private var attackTimer:FlxTimer;
 		private var animTimer:FlxTimer;
 		public var cops:FlxGroup;
 		public var squares:FlxGroup;
+		private var soundBank:Array;
+		private var soundTimer:FlxTimer;
 		
 		static public const X_POS:int = 140;
 		public const MIN_X_POLICE:int = 42;
@@ -20,6 +30,7 @@ package
 		public const MAX_X_SQUARE:int = 142;
 		public const ATTACK_DELAY:int = 2;
 		public const ANIM_DELAY:int = 1;
+		public const SOUND_DELAY:int = 5;
 		
 		public function Robeauchamp(playerRef:Player) 
 		{
@@ -35,6 +46,10 @@ package
 			
 			play("normal");
 			x = player.x + X_POS;
+			
+			soundBank = new Array(replique1Sound, replique2Sound, replique3Sound, replique4Sound, replique5Sound, replique6Sound);
+			soundTimer = new FlxTimer();
+			soundTimer.start(SOUND_DELAY);
 			
 			cops = new FlxGroup();
 			squares = new FlxGroup();
@@ -63,6 +78,12 @@ package
 			if (animTimer.finished)
 				play("normal");
 			
+			if (soundTimer.finished)
+			{
+				sayReplique();
+				soundTimer.start(SOUND_DELAY);
+			}
+				
 			super.update();
 		}
 		
@@ -115,6 +136,14 @@ package
 				squares.add(new Square(posX, 9));
 				play("shooting");
 				animTimer.start(ANIM_DELAY);
+			}
+		}
+		
+		public function sayReplique():void
+		{
+			if (Math.random() > 0.5)
+			{
+				FlxG.play(soundBank[Math.floor(Math.random() * 6)]);
 			}
 		}
 	}
