@@ -11,6 +11,7 @@ package
 		[Embed(source = '../res/backgroundnature.png')] private var backgroundImage:Class;
 		[Embed(source = '../res/securitypipetwo.mp3')] private var gameMusic:Class;
 		[Embed(source = '../res/laugh.mp3')] public var laughSound:Class;
+		[Embed(source = '../res/punch.mp3')] public var punchSound:Class;
 		public var player:Player;
 		public var route:FlxTileblock;
 		public var coins:FlxGroup;
@@ -144,11 +145,12 @@ package
 		{
 			coin.kill();
 			player.scoreVal += 5;
-			FlxG.play(coinSound);
+			FlxG.play(coinSound, 0.7);
 		}
 		
 		public function handlePoliceCollision(police:Police, player:Player):void
 		{
+			FlxG.play(punchSound, 0.7)
 			player.kill();
 		}
 		
