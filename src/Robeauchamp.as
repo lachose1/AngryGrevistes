@@ -101,7 +101,12 @@ package
 		
 		private function launchSquares():void
 		{
+			var posX:int = Math.floor((x + width / 2) / 8);
 			
+			if (posX >= MIN_X_SQUARE && posX <= MAX_X_SQUARE)
+			{
+				squares.add(new Square(posX, 13));
+			}
 		}
 	}
 		
