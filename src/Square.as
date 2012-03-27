@@ -44,7 +44,7 @@ package
 				else
 				{
 					loadGraphic(redSquareImage, true, false, 17, 17);
-					velocity.x = 300;
+					velocity.x = 400;
 				}
 				
 				changedColor = true;
