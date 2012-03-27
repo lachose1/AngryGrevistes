@@ -8,11 +8,14 @@ package
 		private var player:Player;
 		private var attackTimer:FlxTimer;
 		public var cops:FlxGroup;
-				
+		public var squares:FlxGroup;
+		
 		static public const X_POS:int = 140;
 		public const MIN_X_POLICE:int = 42;
 		public const MAX_X_POLICE:int = 142;
 		public const MAX_Y_POLICE:int = 25;
+		public const MIN_X_SQUARE:int = 42;
+		public const MAX_X_SQUARE:int = 142;
 		public const ATTACK_DELAY:int = 3;
 		
 		public function Robeauchamp(playerRef:Player) 
@@ -31,6 +34,7 @@ package
 			x = player.x + X_POS;
 			
 			cops = new FlxGroup();
+			squares = new FlxGroup();
 			
 			attackTimer = new FlxTimer();
 			attackTimer.start(ATTACK_DELAY);
@@ -40,6 +44,7 @@ package
 		{
 			x = X_POS + 9;
 			cops.clear();
+			squares.clear();
 		}
 		
 		override public function update():void 
@@ -62,7 +67,8 @@ package
 				case 0: //Creer polices
 					createPolice();
 					break;
-				case 1:
+				case 1: //Lancer carres
+					launchSquares();
 					break;
 				default:
 					break;
@@ -89,6 +95,11 @@ package
 						break;
 				}
 			}
+		}
+		
+		private function launchSquares():void
+		{
+			
 		}
 	}
 		
