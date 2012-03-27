@@ -17,7 +17,7 @@ package
 		public const MAX_Y_POLICE:int = 25;
 		public const MIN_X_SQUARE:int = 42;
 		public const MAX_X_SQUARE:int = 142;
-		public const ATTACK_DELAY:int = 3;
+		public const ATTACK_DELAY:int = 2;
 		
 		public function Robeauchamp(playerRef:Player) 
 		{
