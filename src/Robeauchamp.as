@@ -21,7 +21,6 @@ package
 		private var player:Player;
 		private var attackTimer:FlxTimer;
 		private var animTimer:FlxTimer;
-		private var damageTimer:FlxTimer;
 		public var cops:FlxGroup;
 		public var squares:FlxGroup;
 		private var soundBank:Array;
@@ -35,12 +34,11 @@ package
 		public const MIN_X_POLICE:int = 42;
 		public const MAX_X_POLICE:int = 142;
 		public const MAX_Y_POLICE:int = 25;
-		public const MIN_X_SQUARE:int = 42;
-		public const MAX_X_SQUARE:int = 142;
+		public const MIN_X_SQUARE:int = 0;
+		public const MAX_X_SQUARE:int = 120;
 		public const ATTACK_DELAY:int = 2;
 		public const ANIM_DELAY:int = 1;
 		public const SOUND_DELAY:int = 5;
-		public const DAMAGE_DELAY:int = 0.2;
 		
 		public function Robeauchamp(playerRef:Player) 
 		{
@@ -57,7 +55,6 @@ package
 			addAnimation("normal", [0, 1, 2], 3);
 			addAnimation("shooting", [3, 4, 5], 3);
 			addAnimation("dead", [6, 6, 6], 5);
-			addAnimation("damage", [7, 7, 7], 3);
 			
 			play("normal");
 			x = player.x + X_POS;
@@ -73,8 +70,6 @@ package
 			attackTimer.start(ATTACK_DELAY);
 			
 			animTimer = new FlxTimer();
-			
-			damageTimer = new FlxTimer();
 			
 			hitCounter = 0;
 			bounceCounter = 0;
@@ -99,7 +94,7 @@ package
 				
 				if (animTimer.finished && !dead)
 					play("normal");
-									
+					
 				if (soundTimer.finished)
 				{
 					sayReplique();
@@ -157,6 +152,10 @@ package
 		{	
 			var posX:int = Math.floor((x + width / 2) / 8);
 			
+			for (var i:uint = 0; i < squares.length; ++i)
+				if (squares.members[i].x >= player.x)
+					return;
+			
 			if (posX >= MIN_X_SQUARE && posX <= MAX_X_SQUARE)
 			{
 				bounceCounter = 0;
@@ -178,8 +177,6 @@ package
 		public function takeDamage():void
 		{
 			FlxG.play(dammageSound);
-			play("damage");
-			damageTimer.start(DAMAGE_DELAY);
 		}
 		
 		public function winBoss():void
