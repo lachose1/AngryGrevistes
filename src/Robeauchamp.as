@@ -20,6 +20,7 @@ package
 		private var player:Player;
 		private var attackTimer:FlxTimer;
 		private var animTimer:FlxTimer;
+		private var damageTimer:FlxTimer;
 		public var cops:FlxGroup;
 		public var squares:FlxGroup;
 		private var soundBank:Array;
@@ -37,6 +38,7 @@ package
 		public const ATTACK_DELAY:int = 2;
 		public const ANIM_DELAY:int = 1;
 		public const SOUND_DELAY:int = 5;
+		public const DAMAGE_DELAY:int = 0.5;
 		
 		public function Robeauchamp(playerRef:Player) 
 		{
@@ -52,6 +54,7 @@ package
 			addAnimation("normal", [0, 1, 2], 3);
 			addAnimation("shooting", [3, 4, 5], 3);
 			addAnimation("dead", [6, 6, 6], 5);
+			addAnimation("damage", [7, 7, 7], 3);
 			
 			play("normal");
 			x = player.x + X_POS;
@@ -67,6 +70,9 @@ package
 			attackTimer.start(ATTACK_DELAY);
 			
 			animTimer = new FlxTimer();
+			
+			damageTimer = new FlxTimer();
+			damageTimer.start(DAMAGE_DELAY);
 			
 			hitCounter = 0;
 			bounceCounter = 0;
@@ -87,7 +93,7 @@ package
 				attackTimer.start(ATTACK_DELAY);
 			}
 			
-			if (animTimer.finished)
+			if (animTimer.finished && damageTimer.finished)
 				play("normal");
 			
 			if (soundTimer.finished)
@@ -165,6 +171,8 @@ package
 		public function takeDamage():void
 		{
 			FlxG.play(dammageSound);
+			play("damage");
+			damageTimer.start(DAMAGE_DELAY);
 		}
 	}
 		
