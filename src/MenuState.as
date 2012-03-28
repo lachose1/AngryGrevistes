@@ -55,9 +55,8 @@ package
 			super.update();
 			
 			if (FlxG.keys.justPressed("X") || FlxG.keys.justPressed("C"))
-			{
-				FlxG.switchState(new PlayState());
-			}
+				FlxG.switchState(new InstructionsState());
+				
 			FlxG.camera.setBounds( FlxG.camera.scroll.x, FlxG.camera.scroll.y, FlxG.camera.scroll.x + 640, 240, true );	
 		}
  
