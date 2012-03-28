@@ -127,6 +127,9 @@ package
 					FlxG.camera.setBounds( 0, 0, 320, 240, true );
 				}
 				
+				for (var i:uint = 0; i < boss.squares.countLiving(); i++)
+					add(boss.squares.members[i].nutsEmitter);
+				
 				super.update();
 				
 				if (!player.dead)
@@ -189,6 +192,7 @@ package
 					case 0:
 						++boss.hitCounter;
 						boss.takeDamage();
+						square.startNuts();
 						square.kill();
 						break;
 					case 1:
@@ -201,7 +205,7 @@ package
 						else
 						{
 							++boss.hitCounter;
-							boss.takeDamage();
+							square.startNuts();
 							square.kill();
 							boss.bounceCounter = 0;
 						}
@@ -217,6 +221,7 @@ package
 						{
 							++boss.hitCounter;
 							boss.takeDamage();
+							square.startNuts();
 							square.kill();
 							boss.bounceCounter = 0;
 							//Ajouter anim de mort and all that shit, au lieu de kill()
