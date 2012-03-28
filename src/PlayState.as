@@ -138,7 +138,14 @@ package
 					FlxG.overlap(boss.squares, player, handleSquareCollision);
 					FlxG.overlap(boss.squares, boss.hitboxBeauchamp, handleSquareRobeauchampCollision);
 				}
-
+				
+				if (boss.dead)
+				{
+					player.maxVelocity.x = 0;
+					player.acceleration.x = 0;
+					player.play("stopped");
+				}
+				
 				FlxG.collide(route, player);
 					
 				//Garder un collision-checking bound pas trop grand sinon ça va foirer la mémoire
@@ -225,7 +232,7 @@ package
 							square.startNuts();
 							square.kill();
 							boss.bounceCounter = 0;
-							boss.kill();
+							boss.winBoss();
 						}
 						break;
 					default:
