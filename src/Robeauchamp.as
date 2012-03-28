@@ -187,6 +187,7 @@ package
 			play("dead");
 			maxVelocity.x = 0;
 			acceleration.x = 0;
+			offset.y = -10;
 		}
 	}
 		
