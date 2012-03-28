@@ -136,7 +136,7 @@ package
 				{
 					FlxG.overlap(boss.cops, player, handlePoliceCollision);
 					FlxG.overlap(boss.squares, player, handleSquareCollision);
-					FlxG.overlap(boss.squares, boss, handleSquareRobeauchampCollision);
+					FlxG.overlap(boss.squares, boss.hitboxBeauchamp, handleSquareRobeauchampCollision);
 				}
 				
 				if (boss.dead)
@@ -190,50 +190,49 @@ package
 			}
 		}
 		
-		public function handleSquareRobeauchampCollision(square:Square, robeauchamp:Robeauchamp):void
+		public function handleSquareRobeauchampCollision(square:Square, hitbox:FlxSprite):void
 		{
 			if (!square.green)
 			{
-				switch(robeauchamp.hitCounter)
+				switch(boss.hitCounter)
 				{
 					case 0:
-						++robeauchamp.hitCounter;
-						robeauchamp.takeDamage();
+						++boss.hitCounter;
+						boss.takeDamage();
 						square.startNuts();
 						square.kill();
 						break;
 					case 1:
-						if (robeauchamp.bounceCounter < 1)
+						if (boss.bounceCounter < 1)
 						{
-							++robeauchamp.bounceCounter;
+							++boss.bounceCounter;
 							square.changeColor();
 							FlxG.play(hitSound);
 						}
 						else
 						{
-							++robeauchamp.hitCounter;
-							robeauchamp.takeDamage();
+							++boss.hitCounter;
 							square.startNuts();
 							square.kill();
-							robeauchamp.bounceCounter = 0;
+							boss.bounceCounter = 0;
 						}
 						break;
 					case 2:
-						if (robeauchamp.bounceCounter  < 2)
+						if (boss.bounceCounter  < 2)
 						{
-							++robeauchamp.bounceCounter;
+							++boss.bounceCounter;
 							square.changeColor();
 							FlxG.play(hitSound);
 						}
 						else
 						{
-							++robeauchamp.hitCounter;
-							robeauchamp.takeDamage();
+							++boss.hitCounter;
+							boss.takeDamage();
 							square.startNuts();
 							square.kill();
-							robeauchamp.bounceCounter = 0;
+							boss.bounceCounter = 0;
 							//Ajouter anim de mort and all that shit, au lieu de kill()
-							robeauchamp.winBoss();
+							boss.winBoss();
 						}
 						break;
 					default:
