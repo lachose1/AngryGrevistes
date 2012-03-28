@@ -83,7 +83,10 @@ package
 					play("jump");
 				else
 				{
-					play("normal");
+					if(!playState.coinSpawned)
+						play("normal");
+					else
+						play("stopped");
 					jumped = false;
 					doubleJumped = false;
 				}
