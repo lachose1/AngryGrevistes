@@ -38,7 +38,7 @@ package
 		public const ATTACK_DELAY:int = 2;
 		public const ANIM_DELAY:int = 1;
 		public const SOUND_DELAY:int = 5;
-		public const DAMAGE_DELAY:int = 0.5;
+		public const DAMAGE_DELAY:int = 0.2;
 		
 		public function Robeauchamp(playerRef:Player) 
 		{
@@ -93,7 +93,7 @@ package
 				attackTimer.start(ATTACK_DELAY);
 			}
 			
-			if (animTimer.finished && damageTimer.finished)
+			if (animTimer.finished)
 				play("normal");
 			
 			if (soundTimer.finished)
