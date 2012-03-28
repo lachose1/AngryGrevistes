@@ -22,6 +22,8 @@ package
 		public var squares:FlxGroup;
 		private var soundBank:Array;
 		private var soundTimer:FlxTimer;
+		public var hitCounter:int;
+		public var bounceCounter:int;
 		
 		static public const X_POS:int = 140;
 		public const MIN_X_POLICE:int = 42;
@@ -59,6 +61,9 @@ package
 			attackTimer.start(ATTACK_DELAY);
 			
 			animTimer = new FlxTimer();
+			
+			hitCounter = 0;
+			bounceCounter = 0;
 		}
 		
 		public function loopback():void
@@ -134,6 +139,7 @@ package
 			
 			if (posX >= MIN_X_SQUARE && posX <= MAX_X_SQUARE)
 			{
+				bounceCounter = 0;
 				squares.add(new Square(posX, 9));
 				FlxG.play(shootSound);
 				play("shooting");

@@ -10,7 +10,6 @@ package
 		public const TILE_SIZE:uint = 8;
 		
 		public var green:Boolean;
-		private var changedColor:Boolean;
 		
 		public function Square(X:uint, Y:uint)
 		{
@@ -20,7 +19,6 @@ package
 			play("spinning");
 			
 			green = true;
-			changedColor = false;
 			
 			velocity.x = -100;
 			
@@ -34,8 +32,6 @@ package
 		
 		public function changeColor():void
 		{
-			if (!changedColor)
-			{
 				green = !green;
 				if (green)
 				{
@@ -49,9 +45,6 @@ package
 					velocity.x = 400;
 					velocity.y = -velocity.y + 50;
 				}
-				
-				changedColor = true;
-			}
 		}
 	}
 

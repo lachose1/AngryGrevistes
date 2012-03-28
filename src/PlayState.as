@@ -132,6 +132,7 @@ package
 				{
 					FlxG.overlap(boss.cops, player, handlePoliceCollision);
 					FlxG.overlap(boss.squares, player, handleSquareCollision);
+					FlxG.overlap(boss.squares, boss, handleSquareRobeauchampCollision);
 				}
 
 				FlxG.collide(route, player);
@@ -171,7 +172,55 @@ package
 		
 		public function handleSquareCollision(square:Square, player:Player):void
 		{
-			square.changeColor();
+			if (square.green)
+				square.changeColor();
+		}
+		
+		public function handleSquareRobeauchampCollision(square:Square, robeauchamp:Robeauchamp):void
+		{
+			if (!square.green)
+			{
+				switch(robeauchamp.hitCounter)
+				{
+					case 0:
+						++robeauchamp.hitCounter;
+						//Faire flasher line ici
+						square.kill();
+						break;
+					case 1:
+						if (robeauchamp.bounceCounter < 1)
+						{
+							++robeauchamp.bounceCounter;
+							square.changeColor();
+						}
+						else
+						{
+							++robeauchamp.hitCounter;
+							//Faire flasher line ici
+							square.kill();
+							robeauchamp.bounceCounter = 0;
+						}
+						break;
+					case 2:
+						if (robeauchamp.bounceCounter  < 2)
+						{
+							++robeauchamp.bounceCounter;
+							square.changeColor();
+						}
+						else
+						{
+							++robeauchamp.hitCounter;
+							//Faire flasher line ici
+							square.kill();
+							robeauchamp.bounceCounter = 0;
+							//Ajouter anim de mort and all that shit, au lieu de kill()
+							robeauchamp.kill();
+						}
+						break;
+					default:
+						break;
+				}
+			}
 		}
 		
 		public function createWorld():void
