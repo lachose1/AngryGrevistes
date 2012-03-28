@@ -5,6 +5,7 @@ package
 	public class Robeauchamp extends FlxSprite
 	{
 		[Embed(source = '../res/robeauchamppixel.png')] private var robeauchampImage:Class;
+		[Embed(source = '../res/beauchamphitbox.png')] private var beauchampHitboxImage:Class;
 		[Embed(source = '../res/createpolice.mp3')] private var createPoliceSound:Class;
 		[Embed(source = '../res/shoot.mp3')] private var shootSound:Class;
 		[Embed(source = '../res/dammage.mp3')] private var dammageSound:Class;
@@ -25,6 +26,7 @@ package
 		private var soundTimer:FlxTimer;
 		public var hitCounter:int;
 		public var bounceCounter:int;
+		public var hitboxBeauchamp:FlxSprite;
 		
 		static public const X_POS:int = 140;
 		public const MIN_X_POLICE:int = 42;
@@ -43,6 +45,9 @@ package
 			loadGraphic(robeauchampImage, true, false, 240, 180);
 			maxVelocity.x = 200;
 			acceleration.x = 800;
+			
+			hitboxBeauchamp = new FlxSprite(x + 100, y);
+			hitboxBeauchamp.loadGraphic(beauchampHitboxImage, false, false, 100, 180);
 			
 			addAnimation("normal", [0, 1, 2], 3);
 			addAnimation("shooting", [3, 4, 5], 3);
@@ -92,6 +97,7 @@ package
 			}
 				
 			super.update();
+			hitboxBeauchamp.x = x + 100;
 		}
 		
 		private function attack():void

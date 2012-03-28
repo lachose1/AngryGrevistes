@@ -350,6 +350,7 @@ package
 			add(boss);
 			add(boss.cops);
 			add(boss.squares);
+			add(boss.hitboxBeauchamp);
 			FlxG.play(laughSound);
 			FlxG.camera.flash(0xffffffff, 3);
 			clearAll();
