@@ -233,6 +233,7 @@ package
 							boss.bounceCounter = 0;
 							//Ajouter anim de mort and all that shit, au lieu de kill()
 							boss.winBoss();
+							clearAll();
 						}
 						break;
 					default:

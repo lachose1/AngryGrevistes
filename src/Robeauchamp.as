@@ -89,26 +89,28 @@ package
 		
 		override public function update():void 
 		{
-			if (attackTimer.finished)
+			if (!dead)
 			{
-				attack();
-				attackTimer.start(ATTACK_DELAY);
+				if (attackTimer.finished)
+				{
+					attack();
+					attackTimer.start(ATTACK_DELAY);
+				}
+				
+				if (animTimer.finished && !dead)
+					play("normal");
+									
+				if (soundTimer.finished)
+				{
+					sayReplique();
+					soundTimer.start(SOUND_DELAY);
+				}
+					
+				super.update();
+				hitboxBeauchamp.x = x + 100;
 			}
-			
-			if (animTimer.finished && !dead)
-				play("normal");
-			
-			if (dead)
+			else
 				play("dead");
-				
-			if (soundTimer.finished)
-			{
-				sayReplique();
-				soundTimer.start(SOUND_DELAY);
-			}
-				
-			super.update();
-			hitboxBeauchamp.x = x + 100;
 		}
 		
 		private function attack():void
