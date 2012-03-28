@@ -149,8 +149,8 @@ package
 					if (!win)
 					{
 						win = true;
-						winTimer.start(5);
-						FlxG.camera.fade(0xff000000, 5);
+						winTimer.start(10);
+						FlxG.camera.fade(0xff000000, 10);
 					}
 					
 					if (winTimer.finished)

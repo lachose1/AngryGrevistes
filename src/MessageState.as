@@ -21,8 +21,8 @@ package
 						
 			FlxG.bgColor = 0xFFFF0000;
 			creditsTimer = new FlxTimer()
-			creditsTimer.start(10);
-			FlxG.camera.fade(0xff000000, 10);
+			creditsTimer.start(20);
+			FlxG.camera.fade(0xff000000, 20);
 		}
  
 		public function MessageState()
