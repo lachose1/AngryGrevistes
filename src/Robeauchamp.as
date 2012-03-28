@@ -25,7 +25,7 @@ package
 		public var hitCounter:int;
 		public var bounceCounter:int;
 		
-		static public const X_POS:int = 140;
+		static public const X_POS:int = 230;
 		public const MIN_X_POLICE:int = 42;
 		public const MAX_X_POLICE:int = 142;
 		public const MAX_Y_POLICE:int = 25;
@@ -49,6 +49,9 @@ package
 			
 			play("normal");
 			x = player.x + X_POS;
+			width = 70;
+			height = 180;
+			centerOffsets();
 			
 			soundBank = new Array(replique1Sound, replique2Sound, replique3Sound, replique4Sound, replique5Sound, replique6Sound);
 			soundTimer = new FlxTimer();
