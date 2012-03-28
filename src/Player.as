@@ -109,8 +109,8 @@ package
 				if ((FlxG.keys.pressed("X") || FlxG.keys.pressed("C")) && !jumpTimer.finished)
 					velocity.y = -maxVelocity.y / 2;
 					
-				if ((FlxG.keys.pressed("Q")))//CHEAT MODE POUR TOUT SUITE ARRIVER AU BOSS
-					scoreVal = 1620;
+				//if ((FlxG.keys.pressed("Q")))//CHEAT MODE POUR TOUT SUITE ARRIVER AU BOSS
+					//scoreVal = 1620;
 			}
 			
 			super.update();
