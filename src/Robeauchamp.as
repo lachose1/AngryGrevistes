@@ -35,7 +35,7 @@ package
 		public const MAX_X_POLICE:int = 142;
 		public const MAX_Y_POLICE:int = 25;
 		public const MIN_X_SQUARE:int = 0;
-		public const MAX_X_SQUARE:int = 100;
+		public const MAX_X_SQUARE:int = 95;
 		public const ATTACK_DELAY:int = 2;
 		public const ANIM_DELAY:int = 1;
 		public const SOUND_DELAY:int = 5;
