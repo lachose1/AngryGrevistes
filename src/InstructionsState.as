@@ -61,7 +61,7 @@ package
 			title.setFormat(null, 12, 0xFFFFFFFF, "center");
 			add(title);
 			
-			instructions = new FlxText(0, 20, FlxG.width, "Vous incarnez un gréviste. Vous pouvez sauter avec X ou C. Appuyez une seconde fois dans les airs pour effectuer un double saut:");
+			instructions = new FlxText(0, 20, FlxG.width, "Vous incarnez GND. Vous pouvez sauter avec X ou C. Appuyez une seconde fois dans les airs pour effectuer un double saut:");
 			instructions.setFormat(null, 8, 0xFFFFFFFF, "center");
 			add(instructions);
 			
