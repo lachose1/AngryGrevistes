@@ -25,6 +25,7 @@ package
 		public var boss:Robeauchamp;
 		public var winTimer:FlxTimer;
 		public var win:Boolean;
+		public var coinSpawned:Boolean;
 
 		public const MIN_X_COIN:int = 42;
 		public const MAX_Y_COIN:int = 25;
@@ -83,6 +84,7 @@ package
 			
 			winTimer = new FlxTimer();
 			win = false;
+			coinSpawned = false;
 		}
 
 		override public function update():void 
@@ -146,11 +148,17 @@ package
 				
 				if (boss.dead)
 				{
-					if (!win)
+					if (!win && player.scoreVal > 1620)
 					{
 						win = true;
 						winTimer.start(10);
 						FlxG.camera.fade(0xff000000, 10);
+					}
+					
+					if (!coinSpawned)
+					{
+						coins.add(new Coin(player.x / 8 + 1, 20));
+						coinSpawned = true;
 					}
 					
 					if (winTimer.finished)
@@ -158,7 +166,7 @@ package
 						
 					player.maxVelocity.x = 0;
 					player.acceleration.x = 0;
-					player.play("stopped");
+					FlxG.overlap(coins, player, getCoin);
 				}
 				
 				FlxG.collide(route, player);

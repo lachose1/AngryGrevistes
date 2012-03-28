@@ -49,7 +49,7 @@ package
 			maxVelocity.x = 200;
 			acceleration.x = 800;
 			
-			hitboxBeauchamp = new FlxSprite(x + 100, y);
+			hitboxBeauchamp = new FlxSprite(x + 110, y);
 			hitboxBeauchamp.loadGraphic(beauchampHitboxImage, false, false, 100, 180);
 			
 			addAnimation("normal", [0, 1, 2], 3);
@@ -102,7 +102,7 @@ package
 				}
 					
 				super.update();
-				hitboxBeauchamp.x = x + 100;
+				hitboxBeauchamp.x = x + 110;
 			}
 			else
 				play("dead");
