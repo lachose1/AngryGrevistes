@@ -72,7 +72,6 @@ package
 			animTimer = new FlxTimer();
 			
 			damageTimer = new FlxTimer();
-			damageTimer.start(DAMAGE_DELAY);
 			
 			hitCounter = 0;
 			bounceCounter = 0;
