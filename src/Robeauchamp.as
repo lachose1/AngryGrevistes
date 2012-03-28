@@ -7,6 +7,7 @@ package
 		[Embed(source = '../res/robeauchamppixel.png')] private var robeauchampImage:Class;
 		[Embed(source = '../res/createpolice.mp3')] private var createPoliceSound:Class;
 		[Embed(source = '../res/shoot.mp3')] private var shootSound:Class;
+		[Embed(source = '../res/dammage.mp3')] private var dammageSound:Class;
 		
 		[Embed(source = '../res/accessibiliteauxetudes.mp3')] private var replique1Sound:Class;
 		[Embed(source = '../res/positionequilibree.mp3')] private var replique2Sound:Class;
@@ -25,7 +26,7 @@ package
 		public var hitCounter:int;
 		public var bounceCounter:int;
 		
-		static public const X_POS:int = 230;
+		static public const X_POS:int = 140;
 		public const MIN_X_POLICE:int = 42;
 		public const MAX_X_POLICE:int = 142;
 		public const MAX_Y_POLICE:int = 25;
@@ -49,9 +50,6 @@ package
 			
 			play("normal");
 			x = player.x + X_POS;
-			width = 70;
-			height = 180;
-			centerOffsets();
 			
 			soundBank = new Array(replique1Sound, replique2Sound, replique3Sound, replique4Sound, replique5Sound, replique6Sound);
 			soundTimer = new FlxTimer();
@@ -156,6 +154,11 @@ package
 			{
 				FlxG.play(soundBank[Math.floor(Math.random() * 6)]);
 			}
+		}
+		
+		public function takeDamage():void
+		{
+			FlxG.play(dammageSound);
 		}
 	}
 		
