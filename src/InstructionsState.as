@@ -13,9 +13,50 @@ package
 		
 		private var title:FlxText;
 		private var instructions:FlxText;
+		private var gabriel:FlxSprite;
+		private var arielle:FlxSprite;
+		private var police:FlxSprite;
+		private var grenade:FlxSprite;
+		private var coin:FlxSprite;
+		private var square:FlxSprite;		
 		
 		override public function create():void
 		{
+			gabriel = new FlxSprite(148, 60);
+			gabriel.loadGraphic(ninjaImage, true, false, 25, 32, false);
+			gabriel.addAnimation("normal", [0, 1, 2], 10);
+			gabriel.play("normal");
+			add(gabriel);
+			
+			arielle = new FlxSprite(90, 120);
+			arielle.loadGraphic(metroidImage, true, false, 17, 17, false);
+			arielle.addAnimation("normal", [0, 1], 5);
+			arielle.play("normal");
+			arielle.angle = 180;
+			add(arielle);
+			
+			police = new FlxSprite(145, 110);
+			police.loadGraphic(policeImage, true, false, 35, 32, false);
+			police.addAnimation("hitting", [0, 1], 5);
+			police.play("hitting");
+			add(police);
+			
+			grenade = new FlxSprite(210, 120);
+			grenade.loadGraphic(grenadeImage, true, false, 16, 16, false);
+			add(grenade);
+			
+			coin = new FlxSprite(155, 163);
+			coin.loadGraphic(coinImage, true, false, 8, 8, false);
+			coin.addAnimation("spinning", [0, 1, 2, 3, 4, 5, 6, 7], 10);
+			coin.play("spinning");
+			add(coin);
+			
+			square = new FlxSprite(152, 195);
+			square.loadGraphic(greenSquareImage, true, false, 17, 17, false);
+			square.addAnimation("spinning", [0, 1, 2, 3, 4, 5, 6, 7], 20);
+			square.play("spinning");
+			add(square);
+			
 			title = new FlxText(0, 0, FlxG.width, "Instructions:");
 			title.setFormat(null, 12, 0xFFFFFFFF, "center");
 			add(title);
@@ -28,11 +69,11 @@ package
 			instructions.setFormat(null, 8, 0xFFFFFFFF, "center");
 			add(instructions);
 			
-			instructions = new FlxText(0, 136, FlxG.width, "Amassez 1625$:");
+			instructions = new FlxText(0, 146, FlxG.width, "Amassez 1625$:");
 			instructions.setFormat(null, 8, 0xFFFFFFFF, "center");
 			add(instructions);
 			
-			instructions = new FlxText(0, 160, FlxG.width, "Retournez ce projectile contre l'ennemi:");
+			instructions = new FlxText(0, 174, FlxG.width, "Retournez ce projectile contre l'ennemi:");
 			instructions.setFormat(null, 8, 0xFFFFFFFF, "center");
 			add(instructions);
 			
@@ -51,7 +92,7 @@ package
 		override public function update():void 
 		{
 			super.update();
-			
+			grenade.angle -= 10;
 			if (FlxG.keys.justPressed("X") || FlxG.keys.justPressed("C"))
 				FlxG.switchState(new PlayState());
 		}
