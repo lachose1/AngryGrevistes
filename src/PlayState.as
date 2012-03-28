@@ -12,6 +12,7 @@ package
 		[Embed(source = '../res/securitypipetwo.mp3')] private var gameMusic:Class;
 		[Embed(source = '../res/laugh.mp3')] public var laughSound:Class;
 		[Embed(source = '../res/punch.mp3')] public var punchSound:Class;
+		[Embed(source = '../res/hit.mp3')] public var hitSound:Class;
 		public var player:Player;
 		public var route:FlxTileblock;
 		public var coins:FlxGroup;
@@ -173,7 +174,10 @@ package
 		public function handleSquareCollision(square:Square, player:Player):void
 		{
 			if (square.green)
+			{
+				FlxG.play(hitSound);
 				square.changeColor();
+			}
 		}
 		
 		public function handleSquareRobeauchampCollision(square:Square, robeauchamp:Robeauchamp):void
@@ -192,6 +196,7 @@ package
 						{
 							++robeauchamp.bounceCounter;
 							square.changeColor();
+							FlxG.play(hitSound);
 						}
 						else
 						{
@@ -206,6 +211,7 @@ package
 						{
 							++robeauchamp.bounceCounter;
 							square.changeColor();
+							FlxG.play(hitSound);
 						}
 						else
 						{
