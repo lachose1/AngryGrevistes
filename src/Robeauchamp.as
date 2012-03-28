@@ -9,6 +9,7 @@ package
 		[Embed(source = '../res/createpolice.mp3')] private var createPoliceSound:Class;
 		[Embed(source = '../res/shoot.mp3')] private var shootSound:Class;
 		[Embed(source = '../res/dammage.mp3')] private var dammageSound:Class;
+		[Embed(source = '../res/destroy.mp3')] private var destroySound:Class;
 		
 		[Embed(source = '../res/accessibiliteauxetudes.mp3')] private var replique1Sound:Class;
 		[Embed(source = '../res/positionequilibree.mp3')] private var replique2Sound:Class;
@@ -28,6 +29,7 @@ package
 		public var hitCounter:int;
 		public var bounceCounter:int;
 		public var hitboxBeauchamp:FlxSprite;
+		public var dead:Boolean;
 		
 		static public const X_POS:int = 140;
 		public const MIN_X_POLICE:int = 42;
@@ -42,6 +44,7 @@ package
 		
 		public function Robeauchamp(playerRef:Player) 
 		{
+			dead = false;
 			player = playerRef;
 			super(player.x + X_POS, 50);
 			loadGraphic(robeauchampImage, true, false, 240, 180);
@@ -93,9 +96,12 @@ package
 				attackTimer.start(ATTACK_DELAY);
 			}
 			
-			if (animTimer.finished)
+			if (animTimer.finished && !dead)
 				play("normal");
 			
+			if (dead)
+				play("dead");
+				
 			if (soundTimer.finished)
 			{
 				sayReplique();
@@ -173,6 +179,16 @@ package
 			FlxG.play(dammageSound);
 			play("damage");
 			damageTimer.start(DAMAGE_DELAY);
+		}
+		
+		public function winBoss():void
+		{
+			dead = true;
+			FlxG.camera.flash(0xffffffff, 5);
+			FlxG.play(destroySound);
+			play("dead");
+			maxVelocity.x = 0;
+			acceleration.x = 0;
 		}
 	}
 		
