@@ -9,7 +9,7 @@ package
 		
 		public function AngryGrevistes() 
 		{
-			super(320, 240, MessageState, 2);
+			super(320, 240, MenuState, 2);
 		}
 		
 	}

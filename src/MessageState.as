@@ -7,6 +7,7 @@ package
 	{
 		private var message:FlxText;
 		private var vote:FlxText;
+		private var creditsTimer:FlxTimer;
 		
 		override public function create():void
 		{
@@ -19,11 +20,21 @@ package
 			add(vote);
 						
 			FlxG.bgColor = 0xFFFF0000;
+			creditsTimer = new FlxTimer()
+			creditsTimer.start(10);
+			FlxG.camera.fade(0xff000000, 10);
 		}
  
 		public function MessageState()
 		{
 			super();
+		}
+		
+		override public function update():void 
+		{
+			super.update();
+			if (creditsTimer.finished)
+				FlxG.switchState(new CreditsState());
 		}
 	}
 }

@@ -23,6 +23,8 @@ package
 		public var backgroundLoop:FlxSprite;
 		public var bossMode:Boolean;
 		public var boss:Robeauchamp;
+		public var winTimer:FlxTimer;
+		public var win:Boolean;
 
 		public const MIN_X_COIN:int = 42;
 		public const MAX_Y_COIN:int = 25;
@@ -78,6 +80,9 @@ package
 			FlxG.playMusic(gameMusic, 0.8);
 			
 			bossMode = false;
+			
+			winTimer = new FlxTimer();
+			win = false;
 		}
 
 		override public function update():void 
@@ -141,6 +146,16 @@ package
 				
 				if (boss.dead)
 				{
+					if (!win)
+					{
+						win = true;
+						winTimer.start(5);
+						FlxG.camera.fade(0xff000000, 5);
+					}
+					
+					if (winTimer.finished)
+						FlxG.switchState(new MessageState());
+						
 					player.maxVelocity.x = 0;
 					player.acceleration.x = 0;
 					player.play("stopped");

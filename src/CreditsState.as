@@ -16,6 +16,7 @@ package
 		private var musique:FlxText;
 		private var sebastien:FlxText;
 		private var copyright:FlxText;
+		private var restartTimer:FlxTimer;
 		
 		override public function create():void
 		{
@@ -57,11 +58,21 @@ package
 			add(copyright);
 			
 			FlxG.bgColor = 0xFF000000;
+			restartTimer = new FlxTimer()
+			restartTimer.start(10);
+			FlxG.camera.fade(0xff000000, 10);
 		}
  
 		public function CreditsState()
 		{
 			super();
+		}
+		
+		override public function update():void 
+		{
+			super.update();
+			if (restartTimer.finished)
+				FlxG.switchState(new MenuState());
 		}
 	}
 }
