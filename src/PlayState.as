@@ -212,6 +212,7 @@ package
 						else
 						{
 							++boss.hitCounter;
+							boss.takeDamage();
 							square.startNuts();
 							square.kill();
 							boss.bounceCounter = 0;
@@ -231,7 +232,6 @@ package
 							square.startNuts();
 							square.kill();
 							boss.bounceCounter = 0;
-							//Ajouter anim de mort and all that shit, au lieu de kill()
 							boss.winBoss();
 							clearAll();
 						}
