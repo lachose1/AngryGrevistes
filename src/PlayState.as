@@ -188,7 +188,7 @@ package
 				{
 					case 0:
 						++robeauchamp.hitCounter;
-						//Faire flasher line ici
+						robeauchamp.takeDamage();
 						square.kill();
 						break;
 					case 1:
@@ -201,7 +201,7 @@ package
 						else
 						{
 							++robeauchamp.hitCounter;
-							//Faire flasher line ici
+							robeauchamp.takeDamage();
 							square.kill();
 							robeauchamp.bounceCounter = 0;
 						}
@@ -216,7 +216,7 @@ package
 						else
 						{
 							++robeauchamp.hitCounter;
-							//Faire flasher line ici
+							robeauchamp.takeDamage();
 							square.kill();
 							robeauchamp.bounceCounter = 0;
 							//Ajouter anim de mort and all that shit, au lieu de kill()
@@ -350,6 +350,7 @@ package
 			add(boss);
 			add(boss.cops);
 			add(boss.squares);
+			add(boss.hitboxBeauchamp);
 			FlxG.play(laughSound);
 			FlxG.camera.flash(0xffffffff, 3);
 			clearAll();

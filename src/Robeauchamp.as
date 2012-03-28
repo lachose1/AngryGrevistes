@@ -5,8 +5,10 @@ package
 	public class Robeauchamp extends FlxSprite
 	{
 		[Embed(source = '../res/robeauchamppixel.png')] private var robeauchampImage:Class;
+		[Embed(source = '../res/beauchamphitbox.png')] private var beauchampHitboxImage:Class;
 		[Embed(source = '../res/createpolice.mp3')] private var createPoliceSound:Class;
 		[Embed(source = '../res/shoot.mp3')] private var shootSound:Class;
+		[Embed(source = '../res/dammage.mp3')] private var dammageSound:Class;
 		
 		[Embed(source = '../res/accessibiliteauxetudes.mp3')] private var replique1Sound:Class;
 		[Embed(source = '../res/positionequilibree.mp3')] private var replique2Sound:Class;
@@ -18,14 +20,16 @@ package
 		private var player:Player;
 		private var attackTimer:FlxTimer;
 		private var animTimer:FlxTimer;
+		private var damageTimer:FlxTimer;
 		public var cops:FlxGroup;
 		public var squares:FlxGroup;
 		private var soundBank:Array;
 		private var soundTimer:FlxTimer;
 		public var hitCounter:int;
 		public var bounceCounter:int;
+		public var hitboxBeauchamp:FlxSprite;
 		
-		static public const X_POS:int = 230;
+		static public const X_POS:int = 140;
 		public const MIN_X_POLICE:int = 42;
 		public const MAX_X_POLICE:int = 142;
 		public const MAX_Y_POLICE:int = 25;
@@ -34,6 +38,7 @@ package
 		public const ATTACK_DELAY:int = 2;
 		public const ANIM_DELAY:int = 1;
 		public const SOUND_DELAY:int = 5;
+		public const DAMAGE_DELAY:int = 0.5;
 		
 		public function Robeauchamp(playerRef:Player) 
 		{
@@ -43,15 +48,16 @@ package
 			maxVelocity.x = 200;
 			acceleration.x = 800;
 			
+			hitboxBeauchamp = new FlxSprite(x + 100, y);
+			hitboxBeauchamp.loadGraphic(beauchampHitboxImage, false, false, 100, 180);
+			
 			addAnimation("normal", [0, 1, 2], 3);
 			addAnimation("shooting", [3, 4, 5], 3);
 			addAnimation("dead", [6, 6, 6], 5);
+			addAnimation("damage", [7, 7, 7], 3);
 			
 			play("normal");
 			x = player.x + X_POS;
-			width = 70;
-			height = 180;
-			centerOffsets();
 			
 			soundBank = new Array(replique1Sound, replique2Sound, replique3Sound, replique4Sound, replique5Sound, replique6Sound);
 			soundTimer = new FlxTimer();
@@ -64,6 +70,9 @@ package
 			attackTimer.start(ATTACK_DELAY);
 			
 			animTimer = new FlxTimer();
+			
+			damageTimer = new FlxTimer();
+			damageTimer.start(DAMAGE_DELAY);
 			
 			hitCounter = 0;
 			bounceCounter = 0;
@@ -84,7 +93,7 @@ package
 				attackTimer.start(ATTACK_DELAY);
 			}
 			
-			if (animTimer.finished)
+			if (animTimer.finished && damageTimer.finished)
 				play("normal");
 			
 			if (soundTimer.finished)
@@ -94,6 +103,7 @@ package
 			}
 				
 			super.update();
+			hitboxBeauchamp.x = x + 100;
 		}
 		
 		private function attack():void
@@ -156,6 +166,13 @@ package
 			{
 				FlxG.play(soundBank[Math.floor(Math.random() * 6)]);
 			}
+		}
+		
+		public function takeDamage():void
+		{
+			FlxG.play(dammageSound);
+			play("damage");
+			damageTimer.start(DAMAGE_DELAY);
 		}
 	}
 		
