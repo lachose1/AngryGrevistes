@@ -62,7 +62,7 @@ package
 				else
 				{
 					loadGraphic(redSquareImage, true, false, 17, 17);
-					velocity.x = 400;
+					velocity.x = 450;
 					velocity.y = -velocity.y + 50;
 				}
 		}
