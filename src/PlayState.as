@@ -75,7 +75,8 @@ package
 			player = new Player(this);
 			add(player);
 			add(player.scoreDisplay);
-						
+			add(player.lifeDisplay);
+			
 			FlxG.camera.follow(player);
 			FlxG.camera.deadzone = new FlxRect(0, 0, Player.X_POS, 240);
 			FlxG.playMusic(gameMusic, 0.8);

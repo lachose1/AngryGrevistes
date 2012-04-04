@@ -11,6 +11,8 @@ package
 		
 		static public const X_POS:int = 32;
 		static public const X_ACCEL:int = 800;
+		static public const MAX_LIVES:int = 3;
+		
 		private var jumped:Boolean;
 		private var doubleJumped:Boolean;
 		private var jumpTimer:FlxTimer;
@@ -19,6 +21,8 @@ package
 		private var deathTimer:FlxTimer;
 		public var dead:Boolean;
 		private var playState:PlayState;
+		public var lifeCounter:uint;
+		public var lifeDisplay:FlxText;
 		
 		public function Player(stateObj:PlayState) 
 		{
@@ -30,6 +34,13 @@ package
 			scoreDisplay.scrollFactor.x = scoreDisplay.scrollFactor.y = 0;
 			scoreDisplay.shadow = 0xff000000;
 			scoreDisplay.text = "ECONOMIES: " + scoreVal + "$";
+			
+			lifeCounter = MAX_LIVES;
+			
+			lifeDisplay = new FlxText(FlxG.width - 40, 2, 40);
+			lifeDisplay.scrollFactor.x = scoreDisplay.scrollFactor.y = 0;
+			lifeDisplay.shadow = 0xff000000;
+			lifeDisplay.text = "VIES: " + lifeCounter;
 			
 			super(X_POS, FlxG.height - 40);
 			loadGraphic(ninjaImage, true, false, 25, 32);
