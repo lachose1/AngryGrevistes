@@ -6,12 +6,13 @@ package
 	public class Player extends FlxSprite
 	{
 		[Embed(source = '../res/gabriel.png')] private var ninjaImage:Class;
+		[Embed(source = '../res/carre-rouge.png')] private var redSquareImage:Class;
 		[Embed(source = '../res/jump.mp3')] private var jumpSound:Class;
 		[Embed(source = '../res/death.mp3')] private var deathSound:Class;
 		
 		static public const X_POS:int = 32;
 		static public const X_ACCEL:int = 800;
-		static public const MAX_LIVES:int = 3;
+		static public const MAX_LIVES:uint = 3;
 		
 		private var jumped:Boolean;
 		private var doubleJumped:Boolean;
@@ -23,6 +24,7 @@ package
 		private var playState:PlayState;
 		public var lifeCounter:uint;
 		public var lifeDisplay:FlxText;
+		public var squareSprites:FlxGroup;
 		
 		public function Player(stateObj:PlayState) 
 		{
@@ -37,10 +39,21 @@ package
 			
 			lifeCounter = MAX_LIVES;
 			
-			lifeDisplay = new FlxText(FlxG.width - 40, 2, 40);
+			lifeDisplay = new FlxText(FlxG.width - 90, 2, 40);
 			lifeDisplay.scrollFactor.x = scoreDisplay.scrollFactor.y = 0;
 			lifeDisplay.shadow = 0xff000000;
-			lifeDisplay.text = "VIES: " + lifeCounter;
+			lifeDisplay.text = "VIES: ";
+			
+			squareSprites = new FlxGroup();
+			for (var i:uint = 0; i < MAX_LIVES; ++i )
+			{
+				var square:FlxSprite = new FlxSprite(FlxG.width - 60 + 20 * i, 2);
+				square.loadGraphic(redSquareImage, true, false, 17, 17);
+				square.scrollFactor.x = square.scrollFactor.y = 0;
+				square.frame = 1;
+				
+				squareSprites.add(square);
+			}
 			
 			super(X_POS, FlxG.height - 40);
 			loadGraphic(ninjaImage, true, false, 25, 32);
@@ -72,7 +85,7 @@ package
 		override public function update():void 
 		{
 			scoreDisplay.text = "ECONOMIES: " + scoreVal + "$";
-			lifeDisplay.text = "VIES: " + lifeCounter;
+			lifeDisplay.text = "VIES: ";
 			
 			if (dead)
 			{
@@ -142,6 +155,7 @@ package
 				FlxG.play(deathSound);
 				play("dead");
 				--lifeCounter;
+				squareSprites.members[lifeCounter].kill();
 				acceleration.x = 0;
 				velocity.x = velocity.y = 0;
 				deathTimer.start(1);

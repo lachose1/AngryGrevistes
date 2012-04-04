@@ -76,6 +76,7 @@ package
 			add(player);
 			add(player.scoreDisplay);
 			add(player.lifeDisplay);
+			add(player.squareSprites);
 			
 			FlxG.camera.follow(player);
 			FlxG.camera.deadzone = new FlxRect(0, 0, Player.X_POS, 240);
