@@ -1,5 +1,6 @@
 package
 {
+	import flash.ui.Mouse;
 	import flash.net.navigateToURL;
 	import flash.net.URLRequest;
 	import org.flixel.*;
@@ -33,6 +34,8 @@ package
 		
 		override public function update():void 
 		{
+			Mouse.show();
+			
 			super.update();
 		}
 		
