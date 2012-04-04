@@ -119,11 +119,11 @@ package
 					
 				//Garder un collision-checking bound pas trop grand sinon ça va foirer la mémoire
 				FlxG.camera.setBounds( FlxG.camera.scroll.x, FlxG.camera.scroll.y, FlxG.camera.scroll.x + 640, 240, true );
-				if (player.scoreVal >= 1620)
-				{
-					player.scoreVal = 1620;
-					startBossMode();
-				}
+				//if (player.scoreVal >= 1620)
+				//{
+				//	player.scoreVal = 1620;
+				//	startBossMode();
+				//}
 			}
 			else
 			{
