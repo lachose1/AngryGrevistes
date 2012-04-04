@@ -65,7 +65,7 @@ package
 			instructions.setFormat(null, 8, 0xFFFFFFFF, "center");
 			add(instructions);
 			
-			instructions = new FlxText(0, 174, FlxG.width, "Vous devez simplement ammasser le plus d'argent avant de perdre vos trois vies, car l'argent est le seul langage que le gouvernement Charest comprend.");
+			instructions = new FlxText(0, 174, FlxG.width, "Vous devez simplement amasser le plus d'argent avant de perdre vos trois vies, car l'argent est le seul langage que le gouvernement Charest comprend.");
 			instructions.setFormat(null, 8, 0xFFFFFFFF, "center");
 			add(instructions);
 			
