@@ -1,5 +1,6 @@
 package
 {
+	import flash.ui.Mouse;
 	import mx.core.FlexSprite;
 	import org.flixel.*;
  
@@ -21,6 +22,8 @@ package
 		
 		override public function update():void 
 		{
+			Mouse.show();
+			
 			super.update();
 		}
 	}
