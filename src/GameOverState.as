@@ -16,7 +16,8 @@ package
 			FlxG.bgColor = 0xFFFF0000;
 			var url:String = encodeURIComponent("http://www.bigtreestudios.org/games/angrygrevisteshard.html");
 			var title:String = encodeURIComponent("J'ai amassé " + score + "$ à Angry Grévistes pour contrer la hausse! Es-tu capable de faire mieux?");
-			fbUrl = new URLRequest("http://www.facebook.com/sharer.php?u=" + url + "&t=" + title);
+			var image:String = encodeURIComponent("http://bigtreestudios.org/images/logo-promotionnel.png");
+			fbUrl = new URLRequest("https://www.facebook.com/sharer/sharer.php?s=100&p[title]=" + title + "&p[url]=" + url + "&p[images][0]=" + image);
 			
 			fbButton = new FlxButton(10, 200, "fb", fbShare);
 			fbButton.loadGraphic(fbImage);
