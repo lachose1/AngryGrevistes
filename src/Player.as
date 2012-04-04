@@ -78,6 +78,11 @@ package
 			{
 				if (deathTimer.finished)
 				{
+					if (lifeCounter == 0)
+					{
+						FlxG.switchState(new GameOverState(scoreVal));
+					}
+					
 					dead = false;
 					loopback();
 					velocity.x = maxVelocity.x;
