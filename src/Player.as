@@ -72,6 +72,8 @@ package
 		override public function update():void 
 		{
 			scoreDisplay.text = "ECONOMIES: " + scoreVal + "$";
+			lifeDisplay.text = "VIES: " + lifeCounter;
+			
 			if (dead)
 			{
 				if (deathTimer.finished)
@@ -134,6 +136,7 @@ package
 				dead = true;
 				FlxG.play(deathSound);
 				play("dead");
+				--lifeCounter;
 				acceleration.x = 0;
 				velocity.x = velocity.y = 0;
 				deathTimer.start(1);
