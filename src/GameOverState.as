@@ -67,7 +67,9 @@ package
 		}
 		
 		override public function update():void 
-		{	
+		{
+			super.update();
+			
 			if (FlxG.keys.justPressed("X") || FlxG.keys.justPressed("C"))
 				FlxG.switchState(new PlayState());
 		}
