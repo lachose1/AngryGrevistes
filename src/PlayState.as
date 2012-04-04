@@ -34,8 +34,8 @@ package
 		public const COIN_SPAWN_HEIGHT:int = 15;
 		public const MIN_X_POLICE:int = 42;
 		public const MAX_Y_POLICE:int = 25;
-		public const COP_SPAWN_WIDTH:int = 50;
-		public const COP_PATTERNS:int = 2;
+		public const COP_SPAWN_WIDTH:int = 35;
+		public const COP_PATTERNS:int = 3;
 		public const MIN_X_ARIELLE:int = 55;
 		public const MAX_X_ARIELLE:int = 155;
 		public const ARIELLE_SPAWN_HEIGHT:int = 15;
