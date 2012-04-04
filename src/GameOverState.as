@@ -61,15 +61,15 @@ package
 		public function GameOverState(playerScore:uint)
 		{
 			score = playerScore;
+			Mouse.show();
 			
 			super();
 		}
 		
 		override public function update():void 
-		{
-			Mouse.show();
-			
-			super.update();
+		{	
+			if (FlxG.keys.justPressed("X") || FlxG.keys.justPressed("C"))
+				FlxG.switchState(new PlayState());
 		}
 		
 		public function fbShare():void
