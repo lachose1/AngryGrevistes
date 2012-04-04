@@ -7,13 +7,16 @@ package
 		[Embed(source = '../res/speech-heart.mp3')] private var menuMusic:Class;
 		[Embed(source = '../res/logo.png')] private var logoImage:Class;
 		[Embed(source = '../res/backgroundnature.png')] private var backgroundImage:Class;
+		[Embed(source = '../res/colerique.png')] private var coleriqueImage:Class;
 		
 		private var logo:FlxSprite;
 		private var instructions:FlxText;
 		private var background:FlxSprite;
 		private var backgroundLoop:FlxSprite;
+		private var coleriqueVersion:FlxSprite;
 		private const VELOCITY:Number = 100;
 		private const ACCELERATION:Number = 800;
+		private var coleriqueSize:Number = 0;
 		
 		override public function create():void
 		{
@@ -30,6 +33,11 @@ package
 			logo.maxVelocity.x = VELOCITY;
 			logo.acceleration.x = ACCELERATION;
 			
+			coleriqueVersion = new FlxSprite(160-100, 150, coleriqueImage);
+			add(coleriqueVersion);
+			
+			coleriqueVersion.scrollFactor.x = coleriqueVersion.scrollFactor.y = 0;
+			
 			instructions = new FlxText(0, FlxG.height - 48, FlxG.width, "Appuyez sur X ou C pour jouer");
 			instructions.setFormat (null, 8, 0xFFFFFFFF, "center");
 			add(instructions);
@@ -45,6 +53,10 @@ package
 
 		override public function update():void
 		{
+			var answer:Number = Math.abs(Math.sin(coleriqueSize) * 0.5) + 0.5;
+			coleriqueVersion.scale.x = coleriqueVersion.scale.y = answer;
+			coleriqueSize += 0.025;
+			
 			if (FlxG.camera.scroll.x > 1280)
 			{
 				logo.x = 0;
