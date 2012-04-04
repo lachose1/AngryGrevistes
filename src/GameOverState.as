@@ -8,21 +8,33 @@ package
 	public class GameOverState extends FlxState
 	{
 		[Embed(source = '../res/fblogo.png')] private var fbImage:Class;
+		[Embed(source = '../res/twitterlogo.png')] private var twitterImage:Class;
 		private var score:uint;
 		private var fbUrl:URLRequest;
 		private var fbButton:FlxButton;
+		private var tweetUrl:URLRequest;
+		private var tweetButton:FlxButton;
 		
 		override public function create():void
 		{	
 			FlxG.bgColor = 0xFFFF0000;
+			
 			var url:String = encodeURIComponent("http://www.bigtreestudios.org/games/angrygrevisteshard.html");
 			var title:String = encodeURIComponent("J'ai amassé " + score + "$ à Angry Grévistes pour contrer la hausse! Es-tu capable de faire mieux?");
 			var image:String = encodeURIComponent("http://bigtreestudios.org/images/logo-promotionnel.png");
 			fbUrl = new URLRequest("https://www.facebook.com/sharer/sharer.php?s=100&p[title]=" + title + "&p[url]=" + url + "&p[images][0]=" + image);
 			
-			fbButton = new FlxButton(10, 200, "fb", fbShare);
+			var twitterAcc:String = encodeURIComponent("BigTreeStudios");
+			var hashtag:String = encodeURIComponent(" #AngryGrévistes");
+			tweetUrl = new URLRequest("http://twitter.com/intent/tweet?text=" + title + hashtag + "&via=" + twitterAcc);
+			
+			fbButton = new FlxButton(50, 160, null, fbShare);
 			fbButton.loadGraphic(fbImage);
 			add(fbButton);
+			
+			tweetButton = new FlxButton(270-32, 160, null, tweetShare);
+			tweetButton.loadGraphic(twitterImage);
+			add(tweetButton);
 		}
  
 		public function GameOverState(playerScore:uint)
@@ -42,6 +54,11 @@ package
 		public function fbShare():void
 		{
 			navigateToURL(fbUrl, "_blank");
+		}
+		
+		public function tweetShare():void
+		{
+			navigateToURL(tweetUrl, "_blank");
 		}
 	}
 }
