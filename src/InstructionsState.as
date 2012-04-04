@@ -9,7 +9,6 @@ package
 		[Embed(source = '../res/grenade.png')] private var grenadeImage:Class;
 		[Embed(source = '../res/gabriel.png')] private var ninjaImage:Class;
 		[Embed(source = '../res/police.png')] private var policeImage:Class;
-		[Embed(source = '../res/carre-vert.png')] private var greenSquareImage:Class;
 		
 		private var title:FlxText;
 		private var instructions:FlxText;
@@ -18,7 +17,6 @@ package
 		private var police:FlxSprite;
 		private var grenade:FlxSprite;
 		private var coin:FlxSprite;
-		private var square:FlxSprite;		
 		
 		override public function create():void
 		{
@@ -51,12 +49,6 @@ package
 			coin.play("spinning");
 			add(coin);
 			
-			square = new FlxSprite(152, 195);
-			square.loadGraphic(greenSquareImage, true, false, 17, 17, false);
-			square.addAnimation("spinning", [0, 1, 2, 3, 4, 5, 6, 7], 20);
-			square.play("spinning");
-			add(square);
-			
 			title = new FlxText(0, 0, FlxG.width, "Instructions:");
 			title.setFormat(null, 12, 0xFFFFFFFF, "center");
 			add(title);
@@ -69,11 +61,11 @@ package
 			instructions.setFormat(null, 8, 0xFFFFFFFF, "center");
 			add(instructions);
 			
-			instructions = new FlxText(0, 146, FlxG.width, "Amassez 1625$:");
+			instructions = new FlxText(0, 146, FlxG.width, "Récuperez les pièces pour augmenter vos économies:");
 			instructions.setFormat(null, 8, 0xFFFFFFFF, "center");
 			add(instructions);
 			
-			instructions = new FlxText(0, 174, FlxG.width, "Retournez ce projectile contre l'ennemi:");
+			instructions = new FlxText(0, 174, FlxG.width, "Vous devez simplement ammasser le plus d'argent avant de perdre vos trois vies, car l'argent est le seul langage que le gouvernement Charest comprend.");
 			instructions.setFormat(null, 8, 0xFFFFFFFF, "center");
 			add(instructions);
 			
