@@ -92,6 +92,11 @@ package
 		{	
 			if (!bossMode)
 			{
+				if (player.lifeCounter == 0)
+				{
+					FlxG.switchState(new GameOverState(player.scoreVal));
+				}
+				
 				if (FlxG.camera.scroll.x > 1280)
 				{
 					player.loopback();
